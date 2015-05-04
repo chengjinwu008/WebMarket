@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            android:background="@color/grey"
+        >
+    <RelativeLayout
+            style="@style/title_bar"
+            >
+        <ImageButton
+                android:src="@drawable/setting_click_button"
+                android:id="@id/app_info_back"
+                android:layout_alignParentLeft="true"
+                style="@style/title_bar_icon"
+                />
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:layout_toRightOf="@id/app_info_back"
+                  android:paddingRight="50dp"
+                  style="@style/title_bar_text"
+                  android:text="关于"
+                />
+    </RelativeLayout>
+    <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                        android:id="@id/setting_location_request"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="定位选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

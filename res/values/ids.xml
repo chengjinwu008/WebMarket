@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="main_web_content" type="id"/>
+    <item name="search_bar_fragment" type="id"/>
+    <item name="bottom_bar_fragment" type="id"/>
+    <item name="search_bar_logo" type="id"/>
+    <item name="search_bar_btn" type="id"/>
+    <item name="main_loading_screen" type="id"/>
+    <item name="main_content_change" type="id"/>
+    <item name="u_center_title" type="id"/>
+    <item name="u_center_title_setting_button" type="id"/>
+    <item name="u_center_title_msg_button" type="id"/>
+    <item name="setting_back" type="id"/>
+    <item name="setting_exit_btn" type="id"/>
+    <item name="item_icon" type="id"/>
+    <item name="item_text" type="id"/>
+    <item name="setting_location_request" type="id"/>
+    <item name="setting_about_app" type="id"/>
+    <item name="setting_app_version_text" type="id"/>
+    <item name="setting_arrow_app_info" type="id"/>
+    <item name="app_info_back" type="id"/>
+    <item name="alert_dialog_icon" type="id"/>
+    <item name="alert_dialog_title" type="id"/>
+    <item name="alert_dialog_title_bar" type="id"/>
+    <item name="alert_dialog_button_bar" type="id"/>
+    <item name="alert_dialog_scroll_text" type="id"/>
+    <item name="alert_dialog_button_ok" type="id"/>
+    <item name="alert_dialog_button_cancel" type="id"/>
+    <item name="decode" type="id"/>
+    <item name="decode_failed" type="id"/>
+    <item name="decode_succeeded" type="id"/>
+    <item name="quit" type="id"/>
+    <item name="restart_preview" type="id"/>
+    <item name="return_scan_result" type="id"/>
+</resources>

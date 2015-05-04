@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/libs/zxing.jar" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/anim" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable-hdpi" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable-mdpi" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xxhdpi" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/load_failed.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/load_succeed.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/loading.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/pull_icon_big.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/pullup_icon_big.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/refresh_failed.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/refresh_succeed.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/drawable/refreshing.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/layout" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/raw" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/values" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/values-v11" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/res/values-v14" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/activities/CaptureActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/activities/ResultActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/camera/AutoFocusManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/camera/CameraConfigurationManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/camera/CameraManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/camera/PreviewCallback.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/camera/open/OpenCameraInterface.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/decode/DecodeFormatManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/decode/DecodeHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/decode/DecodeThread.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/fragments/MainUIFragment.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/utils/BeepManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/utils/CaptureActivityHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/lanhaijiye/WebMarket/utils/InactivityTimer.java" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

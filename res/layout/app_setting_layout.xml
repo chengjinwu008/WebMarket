@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            android:background="@color/grey"
+              android:orientation="vertical"
+        >
+    <RelativeLayout
+            style="@style/title_bar"
+            >
+        <ImageButton
+                android:src="@drawable/setting_click_button"
+                     android:id="@id/setting_back"
+                     android:layout_alignParentLeft="true"
+                     style="@style/title_bar_icon"
+                />
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/setting_back"
+                  android:paddingRight="50dp"
+                  style="@style/title_bar_text"
+                  android:text="@string/setting"
+                />
+    </RelativeLayout>
+    <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                        android:id="@id/setting_location_request"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="定位选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                >
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="选项"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
+                        style="@style/settiong_item"
+                        android:id="@id/setting_about_app"
+                >
+            <TextView
+                    android:padding="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:text="关于"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content" android:layout_height="match_parent"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+                    android:id="@id/setting_app_version_text"
+                        android:layout_toLeftOf="@id/setting_arrow_app_info"
+                      android:paddingRight="10dp"
+                      android:textColor="@color/dark_gray"
+                      android:gravity="center"
+                    />
+            <ImageView
+                    android:id="@id/setting_arrow_app_info"
+                    android:layout_width="30dp" android:layout_height="match_parent"
+                       android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                       android:paddingRight="5dp"
+                       android:padding="2dp"
+                       android:src="@drawable/load_succeed"
+                       android:background="@color/black"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/exit_button"
+            android:text="退出"
+            android:id="@id/setting_exit_btn"
+            android:layout_width="match_parent" android:layout_height="50dp"/>
+</LinearLayout>
