@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
         if(isFirstLoading){
             FragmentManager manager = getFragmentManager();
             FragmentTransaction transaction = manager.beginTransaction();
-            transaction.show(mContent).hide(mLoading).remove(mLoading).commit();
+            transaction.show(mContent).hide(mLoading).remove(mLoading).commitAllowingStateLoss();
             isFirstLoading=false;
             checkUpdate();
         }

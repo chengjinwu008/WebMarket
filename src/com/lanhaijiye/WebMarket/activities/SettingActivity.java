@@ -131,5 +131,4 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         }
         return deletedFiles;
     }
-
 }

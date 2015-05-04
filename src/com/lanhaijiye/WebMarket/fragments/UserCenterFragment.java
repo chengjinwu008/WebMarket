@@ -20,7 +20,7 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.u_center,container,false);
-
+        
         ImageButton mSetting = (ImageButton) view.findViewById(R.id.u_center_title_setting_button);
         mSetting.setOnClickListener(this);
         return view;

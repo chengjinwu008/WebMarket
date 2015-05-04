@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="64dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+            android:text="正在下载"
+              android:gravity="center"
+              android:textSize="20sp"
+            />
+    <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+              android:id="@id/download_process_hint"
+              android:padding="10dp"
+              android:text="下载进度"
+              android:gravity="center"
+              android:textSize="20sp"
+            />
+    <Button android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="停止下载"
+            android:id="@id/download_notification_stop_btn"
+            />
+</LinearLayout>

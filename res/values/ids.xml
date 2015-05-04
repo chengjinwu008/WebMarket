@@ -32,4 +32,6 @@
     <item name="quit" type="id"/>
     <item name="restart_preview" type="id"/>
     <item name="return_scan_result" type="id"/>
+    <item name="download_process_hint" type="id"/>
+    <item name="download_notification_stop_btn" type="id"/>
 </resources>

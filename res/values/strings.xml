@@ -20,4 +20,16 @@
     <string name="update_hint">有可用更新</string>
     <string name="no_updates">没有可用更新</string>
     <string name="net_err_for_update">网络连接错误，不能检查更新</string>
+    <string name="update_service">升级服务</string>
+    <string name="net_err">网络请求关闭出现错误</string>
+    <string name="dialog">对话框</string>
+    <string name="show_update_info">显示更新请求</string>
+    <string name="btn_click">按钮点击</string>
+    <string name="send_download_request">发送下载请求</string>
+    <string name="handle_request">请求处理</string>
+    <string name="handle_download_request">处理下载请求</string>
+    <string name="result_code">请求返回码</string>
+    <string name="download">下载</string>
+    <string name="download_done">下载完毕准备安装</string>
+    <string name="download_stoped">用户中止了下载</string>
 </resources>

@@ -1,5 +1,8 @@
 package com.lanhaijiye.WebMarket.utils;
 
+import android.util.Log;
+import com.lanhaijiye.WebMarket.R;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +19,7 @@ public class NetWorkUtils {
     private HttpURLConnection connection;
     private BufferedInputStream stream;
     public static final int TIME_OUT = 5000;
+    private int length;
 
     public void close() throws IOException {
         if(connection!=null){
@@ -43,10 +47,16 @@ public class NetWorkUtils {
         }
         connection.setDoInput(true);
         connection.connect();
+        length =  connection.getContentLength();
+        Log.i( "result_code", String.valueOf(connection.getResponseCode()));
         if(connection.getResponseCode()==result_code){
             stream = new BufferedInputStream(connection.getInputStream());
             return stream;
         }
         throw new IOException();
+    }
+
+    public int getContentLength(){
+        return length;
     }
 }

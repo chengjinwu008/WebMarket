@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import com.lanhaijiye.WebMarket.R;
+import com.lanhaijiye.WebMarket.services.UpdateService;
 
 import java.lang.reflect.Type;
 
@@ -50,7 +51,7 @@ public class BaseActivity extends Activity {
                         BaseActivity.this.finish();
                         break;
                     case SHOW_UPDATE_CONFIRM_ORDER:
-                        Log.w("对话框","显示更新请求");
+                        Log.w(getString(R.string.dialog),getString(R.string.show_update_info));
                         if(visible){
 //                            Log.w("对话框","显示更新请求");
                             //显示更新框框
@@ -70,14 +71,17 @@ public class BaseActivity extends Activity {
                             window.setOutsideTouchable(false);
                             window.setFocusable(true);
                             window.setBackgroundDrawable(new ColorDrawable(0));
-                            window.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
                             View.OnClickListener listener =new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     window.dismiss();
+                                    Log.i(getString(R.string.btn_click), v.getId()+";"+R.id.alert_dialog_button_ok);
+
                                     switch (v.getId()){
                                         case R.id.alert_dialog_button_ok:
-                                            //todo 下载并安装更新
+                                            //下载并安装更新
+                                            startService(new Intent(UpdateService.UPDATE_DOWNLOAD_INSTALL));
+                                            Log.i(getString(R.string.btn_click),getString(R.string.send_download_request));
                                             break;
                                         case R.id.alert_dialog_button_cancel:
                                             break;
@@ -86,6 +90,9 @@ public class BaseActivity extends Activity {
                             };
                             ok_btn.setOnClickListener(listener);
                             cancel_btn.setOnClickListener(listener);
+
+                            window.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
+
                         }
                         break;
                 }
