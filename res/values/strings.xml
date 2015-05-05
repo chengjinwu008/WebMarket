@@ -14,7 +14,7 @@
     <string name="refreshing">刷新中</string>
     <string name="release_to_load">释放加载</string>
     <string name="loading">加载中</string>
-    <string name="u_center">用户中心</string>
+    <string name="u_center">我的</string>
     <string name="setting">软件设置</string>
     <string name="can_not_locate">亲，你的手机不能定位啊！</string>
     <string name="update_hint">有可用更新</string>
@@ -32,4 +32,14 @@
     <string name="download">下载</string>
     <string name="download_done">下载完毕准备安装</string>
     <string name="download_stoped">用户中止了下载</string>
+    <string name="input_username_hint">输入用户名/手机号/邮箱</string>
+    <string name="input_username_tab">账号：</string>
+    <string name="input_password_tab">密码：</string>
+    <string name="input_password_hint">请输入密码</string>
+    <string name="exit">退出</string>
+    <string name="login">登录</string>
+    <string name="my_favorite">我的收藏</string>
+    <string name="history">浏览记录</string>
+    <string name="manage_prder_form">订单管理</string>
+    <string name="manage_account">账号管理</string>
 </resources>

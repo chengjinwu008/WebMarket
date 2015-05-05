@@ -34,4 +34,30 @@
     <item name="return_scan_result" type="id"/>
     <item name="download_process_hint" type="id"/>
     <item name="download_notification_stop_btn" type="id"/>
+    <item name="ui_portraint" type="id"/>
+    <item name="ui_user_name_text" type="id"/>
+    <item name="user_info_fragment" type="id"/>
+    <item name="login_btn" type="id"/>
+    <item name="login_title_bar" type="id"/>
+    <item name="login_portraint" type="id"/>
+    <item name="login_username" type="id"/>
+    <item name="login_username_text_hint" type="id"/>
+    <item name="login_username_text" type="id"/>
+    <item name="login_username_delete" type="id"/>
+    <item name="login_password" type="id"/>
+    <item name="login_password_text_hint" type="id"/>
+    <item name="login_password_delete" type="id"/>
+    <item name="login_password_text" type="id"/>
+    <item name="login_comfirm_btn" type="id"/>
+    <item name="password_visible_swap" type="id"/>
+    <item name="login_back" type="id"/>
+    <item name="index_page" type="id"/>
+    <item name="bottom_bar_radio_group" type="id"/>
+    <item name="category_page" type="id"/>
+    <item name="shopping_cart_page" type="id"/>
+    <item name="user_center_page" type="id"/>
+    <item name="index_page_msg_hint" type="id"/>
+    <item name="category_page_msg_hint" type="id"/>
+    <item name="shopping_cart_page_msg_hint" type="id"/>
+    <item name="user_center_page_msg_hint" type="id"/>
 </resources>

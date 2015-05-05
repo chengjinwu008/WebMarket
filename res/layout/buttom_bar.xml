@@ -1,29 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RadioGroup
+            android:id="@id/bottom_bar_radio_group"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-        >
-    <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-                 android:button="@null"
-                 android:padding="5dp"
-                 android:drawableTop="@drawable/radio_button"
-            />
-    <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-                 android:button="@null"
-                 android:padding="5dp"
-                 android:drawableTop="@drawable/radio_button"
-            />
-    <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-                 android:button="@null"
-                 android:padding="5dp"
-                 android:drawableTop="@drawable/radio_button"
-            />
-    <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
-                 android:button="@null"
-                 android:padding="5dp"
-                 android:drawableTop="@drawable/radio_button"
-            />
-</RadioGroup>
+            >
+
+        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                     android:button="@null"
+                     android:padding="5dp"
+                     android:id="@id/index_page"
+                     android:drawableTop="@drawable/radio_button"
+                />
+        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                     android:button="@null"
+                     android:padding="5dp"
+                     android:id="@id/category_page"
+                     android:drawableTop="@drawable/radio_button"
+                />
+        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                     android:button="@null"
+                     android:padding="5dp"
+                     android:id="@id/shopping_cart_page"
+                     android:drawableTop="@drawable/radio_button"
+                />
+        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                     android:button="@null"
+                     android:padding="5dp"
+                     android:id="@id/user_center_page"
+                     android:drawableTop="@drawable/radio_button"
+                />
+    </RadioGroup>
+    <LinearLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp" android:layout_height="match_parent">
+            <TextView android:layout_width="16dp" android:layout_height="16dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="20dp"
+                      android:visibility="gone"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:textSize="12sp"
+                      android:id="@id/index_page_msg_hint"
+                      android:background="@drawable/msg_hint_background"
+                    />
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp" android:layout_height="match_parent">
+            <TextView android:layout_width="16dp" android:layout_height="16dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="20dp"
+                      android:visibility="gone"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:textSize="12sp"
+                      android:id="@id/category_page_msg_hint"
+                      android:background="@drawable/msg_hint_background"
+                    />
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp" android:layout_height="match_parent">
+            <TextView android:layout_width="16dp" android:layout_height="16dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="20dp"
+                      android:visibility="gone"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:textSize="12sp"
+                      android:id="@id/shopping_cart_page_msg_hint"
+                      android:background="@drawable/msg_hint_background"
+                    />
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp" android:layout_height="match_parent">
+            <TextView android:layout_width="16dp" android:layout_height="16dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="20dp"
+                      android:visibility="gone"
+                      android:textColor="@color/white"
+                      android:gravity="center"
+                      android:textSize="12sp"
+                      android:id="@id/user_center_page_msg_hint"
+                      android:background="@drawable/msg_hint_background"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

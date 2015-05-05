@@ -5,12 +5,15 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.BaseActivity;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
@@ -28,14 +31,31 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private Map<BaseFragment, Boolean> fragmentStatus;
     private BaseFragment mFragment;
     private RadioGroup group;
+    private Handler mHandler = new Handler();
+    private TextView index_page_hint;
+    private TextView category_page_hint;
+    private TextView shopping_page_hint;
+    private TextView user_center_page_hint;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = getView(inflater, container);
-
-        group = (RadioGroup) view.findViewById(R.id.bottom_bar_fragment);
+        group = (RadioGroup) view.findViewById(R.id.bottom_bar_radio_group);
         group.setOnCheckedChangeListener(this);
-        ((RadioButton) group.getChildAt(0)).setChecked(true);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ((RadioButton) group.getChildAt(0)).setChecked(true);
+            }
+        }, 500);
+
+        //消息提示view
+        index_page_hint = (TextView) view.findViewById(R.id.index_page_msg_hint);
+        category_page_hint = (TextView) view.findViewById(R.id.category_page_msg_hint);
+        shopping_page_hint = (TextView) view.findViewById(R.id.shopping_cart_page_msg_hint);
+        user_center_page_hint = (TextView) view.findViewById(R.id.user_center_page_msg_hint);
+        //检查消息数目
+        checkMsgCount();
         return view;
     }
 
@@ -62,6 +82,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         fragmentStatus.put(fragment1, false);
         fragmentStatus.put(fragment2, false);
         fragmentStatus.put(fragment3, false);
+
         return view;
     }
 
@@ -105,10 +126,9 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         if (mFragment != null)
             if (mFragment.canGoBack())
                 mFragment.goBack();
-        else if(mFragment!=fragments.get(0)){
+            else if (mFragment != fragments.get(0)) {
                 ((RadioButton) group.getChildAt(0)).setChecked(true);
-            }
-        else
+            } else
                 getActivity().sendBroadcast(new Intent(BaseActivity.SHUT_DOWN_ORDER));
     }
 
@@ -129,9 +149,53 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
         //按钮点击事件
-        while(i>4){
-            i-=4;
+        switch (i) {
+            case R.id.index_page:
+                changeFragment(0);
+                if(index_page_hint.getVisibility()!=View.GONE){
+                    index_page_hint.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.category_page:
+                changeFragment(1);
+                if(category_page_hint.getVisibility()!=View.GONE){
+                    category_page_hint.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.shopping_cart_page:
+                changeFragment(2);
+                if(shopping_page_hint.getVisibility()!=View.GONE){
+                    shopping_page_hint.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.user_center_page:
+                changeFragment(3);
+                if(user_center_page_hint.getVisibility()!=View.GONE){
+                    user_center_page_hint.setVisibility(View.GONE);
+                }
+                break;
         }
-        changeFragment(i - 1);
+    }
+
+    public void checkMsgCount() {
+        //todo 检查每个导航栏的消息数目
+        //docheck
+        int i1 = 0,i2=3,i3=7,i4=0;
+        if(i1!=0){
+            index_page_hint.setText(String.valueOf(i1));
+            index_page_hint.setVisibility(View.VISIBLE);
+        }
+        if(i2!=0){
+            category_page_hint.setText(String.valueOf(i2));
+            category_page_hint.setVisibility(View.VISIBLE);
+        }
+        if(i3!=0){
+            shopping_page_hint.setText(String.valueOf(i3));
+            shopping_page_hint.setVisibility(View.VISIBLE);
+        }
+        if(i4!=0){
+            user_center_page_hint.setText(String.valueOf(i4));
+            user_center_page_hint.setVisibility(View.VISIBLE);
+        }
     }
 }

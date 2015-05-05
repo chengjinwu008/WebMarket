@@ -7,6 +7,9 @@ import android.app.Fragment;
  */
 public abstract class BaseFragment extends Fragment {
 
+    public static final String USER_INFO="user_info";
+    public static final String USER_STATE = "user_state";
+
     public abstract boolean canGoBack();
     public abstract void goBack();
 

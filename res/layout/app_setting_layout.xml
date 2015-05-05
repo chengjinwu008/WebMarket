@@ -116,8 +116,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/exit_button"
-            android:text="退出"
+            android:background="@drawable/exit_button_enable"
+            android:text="@string/exit"
             android:id="@id/setting_exit_btn"
             android:layout_width="match_parent" android:layout_height="50dp"/>
 </LinearLayout>

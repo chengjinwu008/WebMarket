@@ -173,53 +173,52 @@ public class UpdateService extends IntentService {
     private void doCheck() throws PackageManager.NameNotFoundException, IOException {
         NetWorkUtils connection = new NetWorkUtils(CHECK_URL);
         InputStream stream = null;
-//        try {
-//            stream = connection.readUrlASStream(null, 200);
-//            String version_code = StreamUtil.readStream(stream,connection.getContentLength(),null);
-//            String curr_code = PackageUtil.getAppVersion(getApplicationContext());
-//
-//            if (Integer.valueOf(version_code) > Integer.valueOf(curr_code)) {
+        try {
+            stream = connection.readUrlASStream(null, 200);
+            String version_code = StreamUtil.readStream(stream,connection.getContentLength(),null);
+            String curr_code = PackageUtil.getAppVersion(getApplicationContext());
+
+            if (Integer.valueOf(version_code) > Integer.valueOf(curr_code)) {
         //需要更新
-//                applyUpdate(version_code);
-        applyUpdate("1");
+                applyUpdate(version_code);
 //            } else {
 //                //不需要更新
-//                mHandler.postDelayed(new Runnable() {
+                mHandler.postDelayed(new Runnable() {
 //                    @Override
-//                    public void run() {
-//                        Toast.makeText(getApplicationContext(), getString(R.string.no_updates), Toast.LENGTH_SHORT).show();
-//                    }
-//                }, 2000);
-//            }
-//        } catch (IOException e) {
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), getString(R.string.no_updates), Toast.LENGTH_SHORT).show();
+                    }
+                }, 2000);
+            }
+        } catch (IOException e) {
 //            //网络连接失败
-//            e.printStackTrace();
-//            mHandler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Toast.makeText(UpdateService.this, getString(R.string.net_err_for_update), Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        } finally {
-//            connection.close();
-//        }
+            e.printStackTrace();
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(UpdateService.this, getString(R.string.net_err_for_update), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } finally {
+            connection.close();
+        }
     }
 
     //向用户申请更新
     private void applyUpdate(String version_code) throws IOException {
-//        NetWorkUtils connection = new NetWorkUtils(UPDATE_INFO_URL);
-//        String info = StreamUtil.readStream(connection.readUrlASStream(null, 200),connection.getContentLength(), null);
+        NetWorkUtils connection = new NetWorkUtils(UPDATE_INFO_URL);
+        String info = StreamUtil.readStream(connection.readUrlASStream(null, 200),connection.getContentLength(), null);
 
         mHandler.post(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(BaseActivity.SHOW_UPDATE_CONFIRM_ORDER);
                 //把信息封装到intent里面
-//                intent.putExtra(UPDATE_INFO_URL, info);//放入info
-//                intent.putExtra(CHECK_URL, version_code);//放入版本号
+                intent.putExtra(UPDATE_INFO_URL, info);//放入info
+                intent.putExtra(CHECK_URL, version_code);//放入版本号
                 sendBroadcast(intent);
             }
         });
-//        connection.close();
+        connection.close();
     }
 }

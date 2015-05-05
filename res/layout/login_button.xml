@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/background_ui"
+        >
+    <com.lanhaijiye.WebMarket.views.CircleImageView
+            android:layout_width="80dp" android:layout_height="80dp"
+            android:src="@drawable/portraint"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/portraint_ui"
+            android:id="@id/login_btn"
+            />
+    <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent" android:layout_height="50dp">
+        <Button
+                style="@style/ucenter_btn"
+                android:text="@string/my_favorite"
+                />
+        <Button
+                style="@style/ucenter_btn"
+                android:text="@string/history"
+                />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.lanhaijiye.WebMarket.fragments;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -12,10 +13,13 @@ import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.SettingActivity;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 
+import java.util.Map;
+
 /**
  * Created by Administrator on 2015/4/29.
  */
 public class UserCenterFragment extends BaseFragment implements View.OnClickListener {
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,6 +27,8 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         
         ImageButton mSetting = (ImageButton) view.findViewById(R.id.u_center_title_setting_button);
         mSetting.setOnClickListener(this);
+        BaseFragment useInfo = new UILoginFragment();
+        getFragmentManager().beginTransaction().add(R.id.user_info_fragment,useInfo).show(useInfo).commit();
         return view;
     }
 
