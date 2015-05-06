@@ -4,20 +4,13 @@
                 android:layout_height="match_parent"
             android:background="@android:color/transparent"
         >
-    <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:src="@drawable/setting_click_button"
-                 android:layout_alignParentRight="true"
-                 android:padding="3dp"
-                 android:layout_centerVertical="true"
-                 android:layout_marginRight="10dp"
+    <ImageButton
+            style="@style/header_right_btn"
+                 android:src="@drawable/shezhi"
                  android:id="@id/u_center_title_setting_button"
-                 android:background="@android:color/transparent"
             />
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                android:layout_centerInParent="true"
+    <TextView
+            style="@style/header_text"
               android:text="@string/u_center"
-              android:textColor="@color/dark_gray"
-              android:gravity="center"
-              android:textSize="20sp"
             />
 </RelativeLayout>

@@ -7,7 +7,7 @@
     <include layout="@layout/u_center_title"
              android:id="@id/u_center_title"
              android:layout_width="match_parent"
-             android:layout_height="50dp"/>
+             android:layout_height="60dp"/>
     <ScrollView
             android:layout_below="@id/u_center_title"
             android:layout_width="match_parent" android:layout_height="wrap_content">
@@ -18,44 +18,117 @@
                          android:id="@id/user_info_fragment"
                     />
             <TextView
-                    android:textColor="@color/gray_text"
-                    android:textSize="18sp"
-                    android:padding="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/manage_prder_form"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                    style="@style/ucenter_category"
+                    android:text="@string/manage_prder_form"/>
+            <FrameLayout
+                    style="@style/divider"
+                    />
             <RelativeLayout
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:layout_width="match_parent" android:layout_height="50dp">
+                    style="@style/ucenter_item"
+                    >
 
+                <ImageView
+                        style="@style/ucenter_item_icon"
+                        android:src="@drawable/dingdan"
+                        android:id="@+id/imageView"/>
+                <TextView
+                        style="@style/ucenter_item_text"
+                        android:text="@string/my_indent"
+                        android:layout_toRightOf="@+id/imageView"/>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/jiantou"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/imageView6"
+                        android:layout_marginRight="5dp"
+                        android:layout_alignParentRight="true"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/imageView6"
+                          android:text="查看全部订单"
+                          android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                        />
             </RelativeLayout>
-
+            <FrameLayout
+                    style="@style/divider"
+                    />
             <TextView
-                    android:textColor="@color/gray_text"
-                    android:textSize="18sp"
-                    android:padding="10dp"
-                    android:layout_marginTop="5dp"
+                    style="@style/ucenter_category"
                     android:text="@string/manage_account"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                    />
+            <FrameLayout
+                    style="@style/divider"
+                    />
             <RelativeLayout
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:layout_width="match_parent" android:layout_height="50dp">
-
+                    style="@style/ucenter_item">
+                <ImageView
+                        style="@style/ucenter_item_icon"
+                        android:src="@drawable/shoucang"
+                        android:id="@+id/imageView3"/>
+                <TextView
+                        style="@style/ucenter_item_text"
+                        android:text="@string/my_favorite"
+                        android:layout_toRightOf="@+id/imageView3"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@drawable/jiantou"
+                           android:id="@+id/imageView7"
+                           android:layout_centerVertical="true" android:layout_alignParentRight="true"/>
             </RelativeLayout>
+            <FrameLayout
+                    style="@style/divider"
+                    />
             <RelativeLayout
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:layout_width="match_parent" android:layout_height="50dp">
-
+                    style="@style/ucenter_item">
+                <ImageView
+                        style="@style/ucenter_item_icon"
+                        android:src="@drawable/shouhuo"
+                        android:id="@+id/imageView2"/>
+                <TextView style="@style/ucenter_item_text"
+                          android:text="@string/delivery_address"
+                          android:layout_toRightOf="@+id/imageView2"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@drawable/jiantou"
+                           android:id="@+id/imageView8"
+                           android:layout_centerVertical="true" android:layout_alignParentRight="true"/>
             </RelativeLayout>
+            <FrameLayout
+                    style="@style/divider"
+                    />
             <RelativeLayout
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:layout_width="match_parent" android:layout_height="50dp">
-
+                    style="@style/ucenter_item">
+                <ImageView
+                        style="@style/ucenter_item_icon"
+                        android:src="@drawable/ziliao"
+                        android:id="@+id/imageView4"/>
+                <TextView style="@style/ucenter_item_text" android:text="@string/modify_my_data"
+                          android:layout_toRightOf="@+id/imageView4"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@drawable/jiantou"
+                           android:id="@+id/imageView9"
+                           android:layout_centerVertical="true" android:layout_alignParentRight="true"/>
             </RelativeLayout>
+            <FrameLayout
+                    style="@style/divider"
+                    />
+            <RelativeLayout
+                    style="@style/ucenter_item">
+                <ImageView
+                        style="@style/ucenter_item_icon"
+                        android:src="@drawable/kefuzhongxing"
+                        android:id="@+id/imageView5"
+                        />
+                <TextView style="@style/ucenter_item_text" android:text="@string/call_center"
+                          android:layout_toRightOf="@+id/imageView5"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@drawable/jiantou"
+                           android:id="@+id/imageView10"
+                           android:layout_centerVertical="true" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <FrameLayout
+                    style="@style/divider"
+                    />
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>

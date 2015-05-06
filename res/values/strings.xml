@@ -42,4 +42,13 @@
     <string name="history">浏览记录</string>
     <string name="manage_prder_form">订单管理</string>
     <string name="manage_account">账号管理</string>
+    <string name="shopping_cart">购物车</string>
+    <string name="categoty">分类浏览</string>
+    <string name="my_indent">我的订单</string>
+    <string name="delivery_address">收货地址</string>
+    <string name="modify_my_data">修改资料</string>
+    <string name="call_center">客服中心</string>
+    <string name="cancel">取消</string>
+    <string name="mobile_sign_up">手机快速注册</string>
+    <string name="find_password_back">找回密码</string>
 </resources>

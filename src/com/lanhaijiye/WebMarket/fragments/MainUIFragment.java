@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +35,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private TextView category_page_hint;
     private TextView shopping_page_hint;
     private TextView user_center_page_hint;
+    private int NO = -1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,9 +63,9 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         View view = inflater.inflate(R.layout.main, container, false);
         BaseFragment fragment = new MainUIContentFragment();
         fragment.setOnLoadFinishListener(this);
-        BaseFragment fragment1 = new MainUIContentFragment();
+        BaseFragment fragment1 = new CategoryFragment();
         fragment1.setOnLoadFinishListener(this);
-        BaseFragment fragment2 = new MainUIContentFragment();
+        BaseFragment fragment2 = new ShoppingCartFragment();
         fragment2.setOnLoadFinishListener(this);
         BaseFragment fragment3 = new UserCenterFragment();
         fragment3.setOnLoadFinishListener(this);
@@ -89,7 +89,15 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private void changeFragment(int i) {
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        //动画
+        if (NO == -1)
+            NO = i;
+        else if (NO < i)
+            transaction.setCustomAnimations(R.animator.change_fragment_right_in, R.animator.change_fragment_left_out);
+        else if (NO > i)
+            transaction.setCustomAnimations(R.animator.change_fragment_left_in, R.animator.change_fragment_right_out);
+
         BaseFragment fragment = fragments.get(i);
         if (!fragmentStatus.get(fragment)) {
             transaction.add(R.id.main_content_change, fragment);
@@ -106,6 +114,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
             InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+        NO = i;
     }
 
     @Override
@@ -152,25 +161,25 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         switch (i) {
             case R.id.index_page:
                 changeFragment(0);
-                if(index_page_hint.getVisibility()!=View.GONE){
+                if (index_page_hint.getVisibility() != View.GONE) {
                     index_page_hint.setVisibility(View.GONE);
                 }
                 break;
             case R.id.category_page:
                 changeFragment(1);
-                if(category_page_hint.getVisibility()!=View.GONE){
+                if (category_page_hint.getVisibility() != View.GONE) {
                     category_page_hint.setVisibility(View.GONE);
                 }
                 break;
             case R.id.shopping_cart_page:
                 changeFragment(2);
-                if(shopping_page_hint.getVisibility()!=View.GONE){
+                if (shopping_page_hint.getVisibility() != View.GONE) {
                     shopping_page_hint.setVisibility(View.GONE);
                 }
                 break;
             case R.id.user_center_page:
                 changeFragment(3);
-                if(user_center_page_hint.getVisibility()!=View.GONE){
+                if (user_center_page_hint.getVisibility() != View.GONE) {
                     user_center_page_hint.setVisibility(View.GONE);
                 }
                 break;
@@ -180,20 +189,20 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     public void checkMsgCount() {
         //todo 检查每个导航栏的消息数目
         //docheck
-        int i1 = 0,i2=3,i3=7,i4=0;
-        if(i1!=0){
+        int i1 = 0, i2 = 3, i3 = 7, i4 = 0;
+        if (i1 != 0) {
             index_page_hint.setText(String.valueOf(i1));
             index_page_hint.setVisibility(View.VISIBLE);
         }
-        if(i2!=0){
+        if (i2 != 0) {
             category_page_hint.setText(String.valueOf(i2));
             category_page_hint.setVisibility(View.VISIBLE);
         }
-        if(i3!=0){
+        if (i3 != 0) {
             shopping_page_hint.setText(String.valueOf(i3));
             shopping_page_hint.setVisibility(View.VISIBLE);
         }
-        if(i4!=0){
+        if (i4 != 0) {
             user_center_page_hint.setText(String.valueOf(i4));
             user_center_page_hint.setVisibility(View.VISIBLE);
         }

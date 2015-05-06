@@ -3,14 +3,14 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="@drawable/background_ui"
+                android:background="@drawable/bg"
         >
     <com.lanhaijiye.WebMarket.views.CircleImageView
             android:layout_width="80dp" android:layout_height="80dp"
-            android:src="@drawable/portraint"
+            android:src="@drawable/login"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/portraint_ui"
+            android:background="@drawable/touxiang"
             android:id="@id/login_btn"
             />
     <LinearLayout

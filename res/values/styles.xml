@@ -12,11 +12,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
     </style>
-    <style name="title_bar_text">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/dark_gray</item>
-        <item name="android:gravity">center</item>
-    </style>
     <style name="title_bar_icon">
         <item name="android:padding">3dp</item>
         <item name="android:paddingLeft">10dp</item>
@@ -38,5 +33,56 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="ucenter_item">
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+    <style name="ucenter_category">
+        <item name="android:textColor">@color/gray_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/gray_text</item>
+    </style>
+    <style name="header_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="header_right_btn">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+    <style name="ucenter_item_icon">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="ucenter_item_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

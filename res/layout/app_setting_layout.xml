@@ -17,7 +17,7 @@
         <TextView android:layout_width="match_parent" android:layout_height="match_parent"
                     android:layout_toRightOf="@id/setting_back"
                   android:paddingRight="50dp"
-                  style="@style/title_bar_text"
+                  style="@style/header_text"
                   android:text="@string/setting"
                 />
     </RelativeLayout>

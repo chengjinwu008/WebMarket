@@ -60,4 +60,8 @@
     <item name="category_page_msg_hint" type="id"/>
     <item name="shopping_cart_page_msg_hint" type="id"/>
     <item name="user_center_page_msg_hint" type="id"/>
+    <item name="goods" type="id"/>
+    <item name="shopping_cart_webView" type="id"/>
+    <item name="category_page_web" type="id"/>
+    <item name="divider" type="id"/>
 </resources>

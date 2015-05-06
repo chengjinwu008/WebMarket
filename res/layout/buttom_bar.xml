@@ -8,31 +8,36 @@
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:background="#F2F2F2"
             >
 
-        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+        <RadioButton android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
                      android:button="@null"
-                     android:padding="5dp"
+                     android:padding="10dp"
                      android:id="@id/index_page"
-                     android:drawableTop="@drawable/radio_button"
+                     android:layout_gravity="center"
+                     android:drawableTop="@drawable/radio_button_index_page"
                 />
-        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+        <RadioButton android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
                      android:button="@null"
-                     android:padding="5dp"
+                     android:padding="10dp"
                      android:id="@id/category_page"
-                     android:drawableTop="@drawable/radio_button"
+                     android:layout_gravity="center"
+                     android:drawableTop="@drawable/radio_button_category_page"
                 />
-        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+        <RadioButton android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
                      android:button="@null"
-                     android:padding="5dp"
+                     android:padding="10dp"
                      android:id="@id/shopping_cart_page"
-                     android:drawableTop="@drawable/radio_button"
+                     android:layout_gravity="center"
+                     android:drawableTop="@drawable/radio_button_shopping_cart_page"
                 />
-        <RadioButton android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+        <RadioButton android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
                      android:button="@null"
-                     android:padding="5dp"
+                     android:padding="10dp"
                      android:id="@id/user_center_page"
-                     android:drawableTop="@drawable/radio_button"
+                     android:layout_gravity="center"
+                     android:drawableTop="@drawable/radio_button_user_center_page"
                 />
     </RadioGroup>
     <LinearLayout

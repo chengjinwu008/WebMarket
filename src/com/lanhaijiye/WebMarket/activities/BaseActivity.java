@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.services.UpdateService;
+import com.lanhaijiye.WebMarket.utils.popWindowUtil;
 
 import java.lang.reflect.Type;
 
@@ -65,12 +66,7 @@ public class BaseActivity extends Activity {
 
                             Button cancel_btn = (Button) view.findViewById(R.id.alert_dialog_button_cancel);
 
-                            PopupWindow window = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                            window.setAnimationStyle(R.style.alert_dialog_anim);
-                            window.setTouchable(true);
-                            window.setOutsideTouchable(false);
-                            window.setFocusable(true);
-                            window.setBackgroundDrawable(new ColorDrawable(0));
+                            PopupWindow window = new PopupWindow(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                             View.OnClickListener listener =new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -90,9 +86,7 @@ public class BaseActivity extends Activity {
                             };
                             ok_btn.setOnClickListener(listener);
                             cancel_btn.setOnClickListener(listener);
-
-                            window.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
-
+                            popWindowUtil.show(view,findViewById(android.R.id.content),window,R.style.alert_dialog_anim);
                         }
                         break;
                 }

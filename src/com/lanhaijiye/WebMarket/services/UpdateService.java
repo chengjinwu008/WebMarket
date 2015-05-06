@@ -181,10 +181,10 @@ public class UpdateService extends IntentService {
             if (Integer.valueOf(version_code) > Integer.valueOf(curr_code)) {
         //需要更新
                 applyUpdate(version_code);
-//            } else {
-//                //不需要更新
+            } else {
+                //不需要更新
                 mHandler.postDelayed(new Runnable() {
-//                    @Override
+                    @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(), getString(R.string.no_updates), Toast.LENGTH_SHORT).show();
                     }
