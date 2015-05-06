@@ -1,19 +1,14 @@
 package com.lanhaijiye.WebMarket.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.SettingActivity;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
-
-import java.util.Map;
 
 /**
  * Created by Administrator on 2015/4/29.
