@@ -1,16 +1,12 @@
 package com.lanhaijiye.WebMarket.activities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,9 +14,7 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.services.UpdateService;
-import com.lanhaijiye.WebMarket.utils.popWindowUtil;
-
-import java.lang.reflect.Type;
+import com.lanhaijiye.WebMarket.utils.PopWindowUtil;
 
 /**
  * Created by Administrator on 2015/4/29.
@@ -86,7 +80,7 @@ public class BaseActivity extends Activity {
                             };
                             ok_btn.setOnClickListener(listener);
                             cancel_btn.setOnClickListener(listener);
-                            popWindowUtil.show(view,findViewById(android.R.id.content),window,R.style.alert_dialog_anim);
+                            PopWindowUtil.show(view,null ,findViewById(android.R.id.content), window, R.style.alert_dialog_anim);
                         }
                         break;
                 }

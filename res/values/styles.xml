@@ -24,10 +24,7 @@
     <style name="alert_dialog">
         <item name="android:background">@android:color/transparent</item>
     </style>
-    <style name="alert_dialog_anim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/alert_dialog_in</item>
-        <item name="android:windowExitAnimation">@anim/alert_dialog_out</item>
-    </style>
+
     <style name="ucenter_btn">
         <item name="android:background">@color/dark_gray</item>
         <item name="android:layout_weight">1</item>
@@ -71,6 +68,16 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginRight">10dp</item>
     </style>
+
+    <style name="header_left_btn">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
     <style name="ucenter_item_icon">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>
@@ -84,5 +91,16 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+<!--动作类-->
+    <style name="alert_dialog_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/alert_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/alert_dialog_out</item>
+    </style>
+
+    <style name="account_list_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/account_list_in</item>
+        <item name="android:windowExitAnimation">@anim/account_list_out</item>
     </style>
 </resources>

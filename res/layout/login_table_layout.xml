@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/grey"
-        >
+                android:background="@color/grey">
     <RelativeLayout android:id="@id/login_title_bar"
                     android:background="@color/white"
                     android:layout_width="match_parent" android:layout_height="60dp">
@@ -57,12 +56,12 @@
                 android:hint="@string/input_username_hint"
                 android:inputType="text"
                 android:layout_width="200dp" android:layout_height="wrap_content"/>
-        <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <ImageButton android:layout_width="30dp" android:layout_height="30dp"
                      android:layout_alignParentRight="true"
                      android:layout_marginRight="10dp"
                      android:id="@id/login_username_delete"
                      android:layout_centerVertical="true"
-                     android:scaleType="centerCrop"
+                     android:scaleType="centerInside"
                      android:background="@color/grey"
                      android:src="@drawable/jiantou"
                      android:visibility="visible"
@@ -118,25 +117,21 @@
             android:background="@drawable/exit_button"
             android:gravity="center"
             android:text="@string/login"
+            android:textColor="@color/white"
             android:enabled="false"
-            android:id="@id/login_comfirm_btn"
+            android:id="@id/login_confirm_btn"
             />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textSize="14sp"
-              android:text="@string/mobile_sign_up"
-              android:layout_below="@id/login_comfirm_btn"
-              android:textColor="@color/gray_text"
-              android:layout_marginTop="10dp"
-              android:layout_marginLeft="10dp"
-            />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:layout_alignParentRight="true"
-              android:textSize="14sp"
-              android:text="@string/find_password_back"
-              android:layout_marginTop="10dp"
-              android:layout_marginRight="10dp"
-              android:layout_below="@id/login_comfirm_btn"
-              android:textColor="@color/gray_text"
+    <TextView
+            android:id="@id/login_mobile_sign_up_btn"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/mobile_sign_up"
+            android:layout_below="@id/login_confirm_btn"
+            android:textColor="@color/gray_text"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             />
     <LinearLayout
             android:layout_alignParentBottom="true"
