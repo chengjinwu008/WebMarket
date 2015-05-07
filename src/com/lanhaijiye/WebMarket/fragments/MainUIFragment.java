@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,6 @@ import java.util.Map;
 public class MainUIFragment extends BaseFragment implements BaseFragment.LoadingListener, RadioGroup.OnCheckedChangeListener {
     private LoadingListener listener;
     private ArrayList<BaseFragment> fragments;
-    private Map<BaseFragment, Boolean> fragmentStatus;
     private BaseFragment mFragment;
     private RadioGroup group;
     private Handler mHandler = new Handler();
@@ -35,7 +35,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private TextView category_page_hint;
     private TextView shopping_page_hint;
     private TextView user_center_page_hint;
-    private int NO =0;
+    private int NO = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,39 +71,25 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         fragment3.setOnLoadFinishListener(this);
 
         fragments = new ArrayList<>();
-        fragmentStatus = new HashMap<>();
 
         fragments.add(fragment);
         fragments.add(fragment1);
         fragments.add(fragment2);
         fragments.add(fragment3);
-
-        fragmentStatus.put(fragment, false);
-        fragmentStatus.put(fragment1, false);
-        fragmentStatus.put(fragment2, false);
-        fragmentStatus.put(fragment3, false);
-
         return view;
     }
 
     private void changeFragment(int i) {
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         //动画
-        if (NO < i)
-            transaction.setCustomAnimations(R.animator.change_fragment_right_in, R.animator.change_fragment_left_out);
-        else if (NO > i)
-            transaction.setCustomAnimations(R.animator.change_fragment_left_in, R.animator.change_fragment_right_out);
-        NO = i;
         BaseFragment fragment = fragments.get(i);
-        if (!fragmentStatus.get(fragment)) {
+        if (!fragment.isAdded()) {
             transaction.add(R.id.main_content_change, fragment);
-            fragmentStatus.put(fragment, true);
         }
-        if (mFragment != null) {
+//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        if (mFragment != null)
             transaction.hide(mFragment);
-        }
         transaction.show(fragment).commit();
         mFragment = fragment;
         //如果键盘弹出，把键盘弹回去

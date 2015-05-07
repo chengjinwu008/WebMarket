@@ -13,6 +13,7 @@ import com.lanhaijiye.WebMarket.activities.inter.Storeable;
 import com.lanhaijiye.WebMarket.fragments.SignUpMobileFragment;
 import com.lanhaijiye.WebMarket.fragments.SignUpMobileVerifyFragment;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
+import com.lanhaijiye.WebMarket.fragments.inter.MobileNumRecieverable;
 
 /**
  * Created by Administrator on 2015/5/7.
@@ -29,7 +30,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         mobile_verify_fragment = new SignUpMobileVerifyFragment();
         mobile_sign_up_fragment = new SignUpMobileFragment();
-        getFragmentManager().beginTransaction().add(android.R.id.content, mobile_verify_fragment) .add(android.R.id.content, mobile_verify_fragment).hide(mobile_verify_fragment).commit();
+        getFragmentManager().beginTransaction().add(android.R.id.content, mobile_sign_up_fragment) .add(android.R.id.content, mobile_verify_fragment).hide(mobile_verify_fragment).commit();
     }
 
     @Override
@@ -55,15 +56,16 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void SaveNum(String num) {
         this.num = num;
+        //todo å¤ç°æ‰‹æœºå·
+        ((MobileNumRecieverable)mobile_verify_fragment).changeNum(num);
     }
 
     @Override
     public void change(BaseFragment nowFragment) {
         if(nowFragment==mobile_sign_up_fragment){
             getFragmentManager().beginTransaction().hide(mobile_sign_up_fragment).show(mobile_verify_fragment).commit();
-            //todo ÊµÏÖµç»°ºÅÂëµÄÌæ»»
         }else{
-            getFragmentManager().beginTransaction().hide(mobile_sign_up_fragment).show(mobile_verify_fragment).commit();
+            getFragmentManager().beginTransaction().hide(mobile_verify_fragment).show(mobile_sign_up_fragment).commit();
         }
     }
 }

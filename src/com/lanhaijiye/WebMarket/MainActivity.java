@@ -58,10 +58,11 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(MainActivity.this,description,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, description, Toast.LENGTH_SHORT).show();
+                    loadFinished();
                 }
             });
-            sendBroadcast(new Intent(SHUT_DOWN_ORDER));
+//            sendBroadcast(new Intent(SHUT_DOWN_ORDER));
         }
     }
 

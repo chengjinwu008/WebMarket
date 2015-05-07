@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.webkit.HttpAuthHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 
 import java.util.Timer;
@@ -36,7 +37,7 @@ public class MyWebViewClient extends WebViewClient {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                getErr("连接超时");
+                getErr("connection time_out");
             }
         },5000);
     }

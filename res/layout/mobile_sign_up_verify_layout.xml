@@ -32,7 +32,7 @@
             />
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:text="351323135131"
-              android:id="@id/sign_up_mobile_num"
+              android:id="@+id/sign_up_mobile_num"
               android:textSize="18sp"
               android:textColor="@color/black"
               android:layout_marginTop="18dp"
@@ -47,22 +47,24 @@
             android:background="@color/white"
             >
         <EditText android:background="@null"
-                  android:id="@id/login_password_text"
+                  android:id="@id/sign_up_verify_code_text"
                   android:inputType="text"
                   android:layout_centerVertical="true"
                   android:hint="输入验证码"
                   android:gravity="left"
                   android:layout_marginLeft="10dp"
                   android:layout_width="200dp" android:layout_height="wrap_content"/>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:background="@drawable/white_with_black_border"
-                  android:text="57秒重发"
+                  android:text="@string/send_sms"
                   android:layout_centerVertical="true"
                   android:layout_alignParentRight="true"
                   android:layout_marginRight="10dp"
-                  android:textSize="18sp"
-                  android:padding="8dp"
-                    android:id="@id/sign_up_sms_timer"
+                android:layout_marginTop="10dp"
+                  android:textSize="14sp"
+                  android:padding="12dp"
+                  android:textColor="@color/gray_text"
+                    android:id="@+id/sign_up_sms_timer"
                 />
     </RelativeLayout>
 

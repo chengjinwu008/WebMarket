@@ -58,4 +58,6 @@
     <string name="input_mobile_num_hint">请输入手机号</string>
     <string name="verifycode_sended_to">验证码已发送到</string>
     <string name="sign_up">注册</string>
+    <string name="send_sms">发送短信</string>
+    <string name="sms_send_hint">秒后再次发送</string>
 </resources>

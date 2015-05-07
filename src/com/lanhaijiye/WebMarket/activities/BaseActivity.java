@@ -46,16 +46,12 @@ public class BaseActivity extends Activity {
                         BaseActivity.this.finish();
                         break;
                     case SHOW_UPDATE_CONFIRM_ORDER:
-                        Log.w(getString(R.string.dialog),getString(R.string.show_update_info));
                         if(visible){
-//                            Log.w("对话框","显示更新请求");
                             //显示更新框框
                             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
                             if(view == null)
                             view = inflater.inflate(R.layout.alert_dialog,null);
 //                            //todo 添加按钮响应，设置文字内容
-//                            AlertDialog dialog = new AlertDialog.Builder(BaseActivity.this).setView(view).create();
-//                            dialog.show();
                             Button ok_btn = (Button) view.findViewById(R.id.alert_dialog_button_ok);
 
                             Button cancel_btn = (Button) view.findViewById(R.id.alert_dialog_button_cancel);
