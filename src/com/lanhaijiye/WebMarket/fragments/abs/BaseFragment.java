@@ -1,6 +1,6 @@
 package com.lanhaijiye.WebMarket.fragments.abs;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by Administrator on 2015/4/28.

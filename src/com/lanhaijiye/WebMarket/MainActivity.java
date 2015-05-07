@@ -1,13 +1,8 @@
 package com.lanhaijiye.WebMarket;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.view.KeyEvent;
 import android.widget.Toast;
 import com.lanhaijiye.WebMarket.activities.BaseActivity;
@@ -19,7 +14,7 @@ import com.lanhaijiye.WebMarket.services.UpdateService;
 public class MainActivity extends BaseActivity implements BaseFragment.LoadingListener {
     private BaseFragment mContent;
     private LoadingScreenFragment mLoading;
-    private boolean isFirstLoading = true;
+    private static boolean isFirstLoading = true;
     private Handler mHandler = new Handler();
     private Intent serviceIntent;
 
@@ -30,9 +25,10 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
             mContent = new MainUIFragment();
             mLoading = new LoadingScreenFragment();
             mContent.setOnLoadFinishListener(this);
-            getFragmentManager().beginTransaction().add(android.R.id.content, mLoading, "loading").add(android.R.id.content, mContent, "content")
-                    .show(mLoading).hide(mContent)
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, mContent, "content").add(android.R.id.content, mLoading, "loading")
+            .show(mLoading)
                     .commit();
+            mContent.setUserVisibleHint(false);
         }
     }
 
@@ -44,10 +40,11 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
     @Override
     public void loadFinished() {
         if(isFirstLoading){
-            FragmentManager manager = getFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
+            android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
             transaction.show(mContent).hide(mLoading).remove(mLoading).commitAllowingStateLoss();
             isFirstLoading=false;
+            mContent.setUserVisibleHint(true);
             checkUpdate();
         }
     }
@@ -78,7 +75,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         stopService(serviceIntent);
+        super.onDestroy();
     }
 }

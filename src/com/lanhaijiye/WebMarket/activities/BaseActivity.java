@@ -1,11 +1,11 @@
 package com.lanhaijiye.WebMarket.activities;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +19,7 @@ import com.lanhaijiye.WebMarket.utils.PopWindowUtil;
 /**
  * Created by Administrator on 2015/4/29.
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
     public static final String SHUT_DOWN_ORDER = "com.lanhaijiye.WebMarket.ACTION_SHUT_DOWN";
     public static final String SHOW_UPDATE_CONFIRM_ORDER = "com.lanhaijiye.WebMarket.ACTION_SHOW_UPDATE_CONFIRM";

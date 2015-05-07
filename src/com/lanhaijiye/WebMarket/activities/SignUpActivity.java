@@ -30,7 +30,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         mobile_verify_fragment = new SignUpMobileVerifyFragment();
         mobile_sign_up_fragment = new SignUpMobileFragment();
-        getFragmentManager().beginTransaction().add(android.R.id.content, mobile_sign_up_fragment) .add(android.R.id.content, mobile_verify_fragment).hide(mobile_verify_fragment).commit();
+        getSupportFragmentManager().beginTransaction().add(android.R.id.content, mobile_sign_up_fragment) .add(android.R.id.content, mobile_verify_fragment).hide(mobile_verify_fragment).commit();
     }
 
     @Override
@@ -63,9 +63,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void change(BaseFragment nowFragment) {
         if(nowFragment==mobile_sign_up_fragment){
-            getFragmentManager().beginTransaction().hide(mobile_sign_up_fragment).show(mobile_verify_fragment).commit();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.change_fragment_left_out,R.anim.change_fragment_right_in).hide(mobile_sign_up_fragment).show(mobile_verify_fragment).commit();
         }else{
-            getFragmentManager().beginTransaction().hide(mobile_verify_fragment).show(mobile_sign_up_fragment).commit();
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.change_fragment_left_in,R.anim.change_fragment_right_out).hide(mobile_verify_fragment).show(mobile_sign_up_fragment).commit();
         }
     }
 }

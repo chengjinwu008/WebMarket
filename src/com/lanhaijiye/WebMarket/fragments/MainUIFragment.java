@@ -1,12 +1,13 @@
 package com.lanhaijiye.WebMarket.fragments;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.BaseActivity;
+import com.lanhaijiye.WebMarket.adapter.PagerAdapter;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2015/4/28.
@@ -36,6 +36,8 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private TextView shopping_page_hint;
     private TextView user_center_page_hint;
     private int NO = 0;
+    private PagerAdapter pagerAdapter;
+    private ViewPager pager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,23 +78,30 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         fragments.add(fragment1);
         fragments.add(fragment2);
         fragments.add(fragment3);
+
+        pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(),fragments);
+        pager = (ViewPager) view.findViewById(R.id.main_content_change);
+        pager.setAdapter(pagerAdapter);
+
         return view;
     }
 
     private void changeFragment(int i) {
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        //动画
-        BaseFragment fragment = fragments.get(i);
-        if (!fragment.isAdded()) {
-            transaction.add(R.id.main_content_change, fragment);
-        }
-//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        if (mFragment != null)
-            transaction.hide(mFragment);
-        transaction.show(fragment).commit();
-        mFragment = fragment;
+//        FragmentManager manager = getActivity().getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        //动画
+//        BaseFragment fragment = fragments.get(i);
+//        if (!fragment.isAdded()) {
+//            transaction.add(R.id.main_content_change, fragment);
+//        }
+////        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//        if (mFragment != null)
+//            transaction.hide(mFragment);
+//        transaction.show(fragment).commit();
+//        mFragment = fragment;
         //如果键盘弹出，把键盘弹回去
+
+        pager.setCurrentItem(i,true);
         View view = getActivity().getWindow().peekDecorView();
         if (view != null) {
             InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
                 android:layout_height="match_parent">
-    <RelativeLayout android:id="@id/main_content_change"
+    <android.support.v4.view.ViewPager android:id="@id/main_content_change"
                     android:layout_above="@id/divider"
                     android:layout_width="fill_parent" android:layout_height="fill_parent"
             >
 
-    </RelativeLayout>
+    </android.support.v4.view.ViewPager>
     <FrameLayout style="@style/divider" android:id="@id/divider" android:layout_above="@id/bottom_bar_fragment"/>
     <include android:layout_width="match_parent" android:layout_height="50dp"
              android:id="@id/bottom_bar_fragment"
