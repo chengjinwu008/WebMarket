@@ -68,6 +68,16 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginRight">10dp</item>
     </style>
+
+    <style name="header_left_btn">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
     <style name="ucenter_item_icon">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>

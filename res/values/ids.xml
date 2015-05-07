@@ -48,7 +48,7 @@
     <item name="login_password_text_hint" type="id"/>
     <item name="login_password_delete" type="id"/>
     <item name="login_password_text" type="id"/>
-    <item name="login_comfirm_btn" type="id"/>
+    <item name="login_confirm_btn" type="id"/>
     <item name="password_visible_swap" type="id"/>
     <item name="login_back" type="id"/>
     <item name="index_page" type="id"/>
@@ -64,4 +64,11 @@
     <item name="shopping_cart_webView" type="id"/>
     <item name="category_page_web" type="id"/>
     <item name="divider" type="id"/>
+    <item name="sign_up_mobile_num" type="id"/>
+    <item name="sign_up_sms_timer" type="id"/>
+    <item name="login_mobile_sign_up_btn" type="id"/>
+    <item name="sign_up_back" type="id"/>
+    <item name="sign_up_view_country_list" type="id"/>
+    <item name="country_list" type="id"/>
+    <item name="country_category_item" type="id"/>
 </resources>

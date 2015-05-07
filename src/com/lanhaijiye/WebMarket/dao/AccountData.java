@@ -29,16 +29,35 @@ public class AccountData {
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase database = helper.getReadableDatabase();
         Cursor cursor =  database.rawQuery("select " + DataBaseHelper.ACCOUNT + " from " + DataBaseHelper.ACCOUNT_TABLE_NAME + " order by _id DESC limit 10", null);
-        if(cursor.getCount()==0) {
+        int size = cursor.getCount();
+        if(size<=0) {
+            cursor.close();
             database.close();
             return null;
         }
-        String[] accounts = new String[cursor.getCount()];
+        String[] accounts = new String[size];
+        cursor.moveToFirst();
         accounts[0] = cursor.getString(cursor.getColumnIndex(DataBaseHelper.ACCOUNT));
         int i=0;
         while (cursor.moveToNext())
-            accounts[i++]=cursor.getString(cursor.getColumnIndex(DataBaseHelper.ACCOUNT));
+            accounts[++i]=cursor.getString(cursor.getColumnIndex(DataBaseHelper.ACCOUNT));
+        cursor.close();
         database.close();
         return accounts;
+    }
+
+    public static boolean isSaved(Context context,String account){
+        DataBaseHelper helper = new DataBaseHelper(context);
+        SQLiteDatabase database = helper.getReadableDatabase();
+        Cursor cursor =  database.rawQuery("select " + DataBaseHelper.ACCOUNT + " from " + DataBaseHelper.ACCOUNT_TABLE_NAME + " where "+DataBaseHelper.ACCOUNT+"=?", new String[]{account});
+        if(cursor.getCount()==0) {
+            cursor.close();
+            database.close();
+            return false;
+        }else{
+            cursor.close();
+            database.close();
+            return true;
+        }
     }
 }

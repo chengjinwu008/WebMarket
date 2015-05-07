@@ -1,5 +1,6 @@
 package com.lanhaijiye.WebMarket.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,15 +17,10 @@ import com.lanhaijiye.WebMarket.utils.SharedPreferenceUtil;
 public class UILoginFragment extends BaseFragment {
 
     public static final int LOGIN_CODE = 0x349;
+    private LoadingListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        SharedPreferenceUtil preferenceUtil = new SharedPreferenceUtil(getActivity(), BaseFragment.USER_INFO);
-        String state = preferenceUtil.readString(BaseFragment.USER_STATE);
-
-        if(state!=null&&state.trim().length()>0){
-            return inflater.inflate(R.layout.user_info,container,false);
-        }
         View view = inflater.inflate(R.layout.login_button,container,false);
         view.findViewById(R.id.login_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +41,10 @@ public class UILoginFragment extends BaseFragment {
         switch (requestCode){
             case LOGIN_CODE:
                 //todo 处理登录活动返回的参数
-                break;
+                if(resultCode == Activity.RESULT_OK)
+                    if(listener!=null)
+                        listener.loadFinished();
+                    break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -62,6 +61,6 @@ public class UILoginFragment extends BaseFragment {
 
     @Override
     public void setOnLoadFinishListener(LoadingListener listener) {
-
+        this.listener = listener;
     }
 }

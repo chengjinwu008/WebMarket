@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+            android:background="@color/grey"
+        >
+    <RelativeLayout
+            android:id="@+id/title"
+            android:background="@color/white"
+            android:layout_width="match_parent" android:layout_height="60dp">
+        <TextView style="@style/header_text"
+                  android:text="国家和地区"
+                />
+        <ImageView
+                android:id="@id/sign_up_back"
+                style="@style/header_left_btn"
+                android:src="@drawable/jiantou"
+                />
+    </RelativeLayout>
+    <FrameLayout
+            android:layout_below="@id/title"
+            style="@style/divider"
+            />
+    <ListView
+            android:id="@id/country_list"
+            android:layout_width="match_parent" android:layout_height="match_parent">
+        
+    </ListView>
+</LinearLayout>
