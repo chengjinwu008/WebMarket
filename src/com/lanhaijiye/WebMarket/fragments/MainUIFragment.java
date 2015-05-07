@@ -35,7 +35,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private TextView category_page_hint;
     private TextView shopping_page_hint;
     private TextView user_center_page_hint;
-    private int NO = -1;
+    private int NO =0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,13 +91,11 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         FragmentTransaction transaction = manager.beginTransaction();
 //        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         //动画
-        if (NO == -1)
-            NO = i;
-        else if (NO < i)
+        if (NO < i)
             transaction.setCustomAnimations(R.animator.change_fragment_right_in, R.animator.change_fragment_left_out);
         else if (NO > i)
             transaction.setCustomAnimations(R.animator.change_fragment_left_in, R.animator.change_fragment_right_out);
-
+        NO = i;
         BaseFragment fragment = fragments.get(i);
         if (!fragmentStatus.get(fragment)) {
             transaction.add(R.id.main_content_change, fragment);
@@ -114,7 +112,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
             InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-        NO = i;
+
     }
 
     @Override
