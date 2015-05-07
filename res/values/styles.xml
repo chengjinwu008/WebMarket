@@ -24,10 +24,7 @@
     <style name="alert_dialog">
         <item name="android:background">@android:color/transparent</item>
     </style>
-    <style name="alert_dialog_anim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/alert_dialog_in</item>
-        <item name="android:windowExitAnimation">@anim/alert_dialog_out</item>
-    </style>
+
     <style name="ucenter_btn">
         <item name="android:background">@color/dark_gray</item>
         <item name="android:layout_weight">1</item>
@@ -84,5 +81,16 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+<!--动作类-->
+    <style name="alert_dialog_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/alert_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/alert_dialog_out</item>
+    </style>
+
+    <style name="account_list_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/account_list_in</item>
+        <item name="android:windowExitAnimation">@anim/account_list_out</item>
     </style>
 </resources>
