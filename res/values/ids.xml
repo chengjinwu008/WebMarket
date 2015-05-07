@@ -71,4 +71,5 @@
     <item name="sign_up_view_country_list" type="id"/>
     <item name="country_list" type="id"/>
     <item name="country_category_item" type="id"/>
+    <item name="sign_up_nexn_step_btn" type="id"/>
 </resources>

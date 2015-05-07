@@ -37,6 +37,7 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
     private String user_name;
     private String password;
     private Button confirmButton;
+    public final static int REGISTER_CODE = 0x554;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,7 +161,8 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
                 break;
             case R.id.login_mobile_sign_up_btn:
                 //todo 跳转到手机注册页面
-                Intent intent = new Intent();
+                Intent intent = new Intent(this,SignUpActivity.class);
+                this.startActivityForResult(intent,REGISTER_CODE);
 //                this.finish();
                 break;
         }
