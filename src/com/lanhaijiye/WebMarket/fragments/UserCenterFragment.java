@@ -1,6 +1,9 @@
 package com.lanhaijiye.WebMarket.fragments;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,7 @@ import com.lanhaijiye.WebMarket.utils.UserAccountUtil;
 public class UserCenterFragment extends BaseFragment implements View.OnClickListener, BaseFragment.LoadingListener {
 
     public static final String CALL_CENTER_URL="/wp/XM0000004/wwwroot/mobile/kefu.php";
+    public static final String LOGIN_STATE_CHANGE="www.lanhaijiye.com.WebMarket.ACTION_LOGIN_STATE_CHANGE";
     private UILoginFragment loginButton;
     private UIUserInfoFragment userinfo;
 
@@ -35,14 +39,16 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         loginButton.setOnLoadFinishListener(this);
         userinfo = new UIUserInfoFragment();
 
-        SharedPreferenceUtil sharedPreferenceUtil = new SharedPreferenceUtil(getActivity(), SharedPreferenceUtil.ACCOUNT);
-        String user_name = sharedPreferenceUtil.readString(SharedPreferenceUtil.USERNAME_KEY);
-        String password = sharedPreferenceUtil.readString(SharedPreferenceUtil.PASSWORD_KEY);
+        changeStateLabel();
 
-        if (user_name == null || user_name.trim().length() < 0)
-            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(loginButton).commit();
-        else
-            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(userinfo).commit();
+        //注册接收登录状态改变的receiver
+        IntentFilter filter = new IntentFilter(LOGIN_STATE_CHANGE);
+        BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                //todo 监听登录状态改变来改变头像
+            }
+        };
 
         //注册菜单按钮
         view.findViewById(R.id.ucenter_indent_list_btn).setOnClickListener(this);
@@ -51,6 +57,13 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         view.findViewById(R.id.ucenter_modify_data_btn).setOnClickListener(this);
         view.findViewById(R.id.ucenter_calling_btn).setOnClickListener(this);
         return view;
+    }
+
+    private void changeStateLabel() {
+        if (!UserAccountUtil.getUserState(getActivity()))
+            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(loginButton).hide(userinfo).commit();
+        else
+            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(userinfo).hide(loginButton).commit();
     }
 
     @Override

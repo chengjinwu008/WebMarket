@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.BaseActivity;
 import com.lanhaijiye.WebMarket.adapter.PagerAdapter;
+import com.lanhaijiye.WebMarket.adapter.inter.PagerAdapterGettable;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2015/4/28.
  */
-public class MainUIFragment extends BaseFragment implements BaseFragment.LoadingListener, RadioGroup.OnCheckedChangeListener {
+public class MainUIFragment extends BaseFragment implements BaseFragment.LoadingListener, RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener,PagerAdapterGettable {
     private ArrayList<BaseFragment> fragments;
     private BaseFragment mFragment;
     private RadioGroup group;
@@ -34,8 +36,8 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private TextView category_page_hint;
     private TextView shopping_page_hint;
     private TextView user_center_page_hint;
-    private PagerAdapter pagerAdapter;
     private ViewPager pager;
+    private PagerAdapter pagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,11 +79,12 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         fragments.add(fragment2);
         fragments.add(fragment3);
         //初始化pager
-        pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(),fragments);
+        pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(), fragments);
         pager = (ViewPager) view.findViewById(R.id.main_content_change);
         //提升pager的缓存数量
         pager.setOffscreenPageLimit(3);
         pager.setAdapter(pagerAdapter);
+        pager.setOnPageChangeListener(this);
 
         return view;
     }
@@ -100,15 +103,15 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
 //        transaction.show(fragment).commit();
 //        mFragment = fragment;
         //如果键盘弹出，把键盘弹回去
-
-        pager.setCurrentItem(i,true);
-        mFragment = fragments.get(i);
-        View view = getActivity().getWindow().peekDecorView();
-        if (view != null) {
-            InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if(pager.getCurrentItem()!=i){
+            pager.setCurrentItem(i,true);
+            mFragment = fragments.get(i);
+            View view = getActivity().getWindow().peekDecorView();
+            if (view != null) {
+                InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
-
     }
 
     @Override
@@ -178,7 +181,7 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     public void checkMsgCount() {
         //todo 检查每个导航栏的消息数目
         //docheck
-        int i1 = 0, i2 = 3, i3 = 7, i4 = 0;
+        int i1 = 0, i2 = 0, i3 = 0, i4 = 0;
         if (i1 != 0) {
             index_page_hint.setText(String.valueOf(i1));
             index_page_hint.setVisibility(View.VISIBLE);
@@ -195,5 +198,25 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
             user_center_page_hint.setText(String.valueOf(i4));
             user_center_page_hint.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+        ((RadioButton) group.getChildAt(i)).setChecked(true);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+
+    }
+
+    @Override
+    public PagerAdapter getPagerAdapter() {
+        return pagerAdapter;
     }
 }

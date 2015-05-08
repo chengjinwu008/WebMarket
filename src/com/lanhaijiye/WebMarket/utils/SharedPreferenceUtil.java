@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
  * Created by Administrator on 2015/5/5.
  */
 public class SharedPreferenceUtil {
-    private Context context;
     private SharedPreferences preferences;
 
     public static final String ACCOUNT ="account";
@@ -15,7 +14,6 @@ public class SharedPreferenceUtil {
     public static final String PASSWORD_KEY = "password";
 
     public SharedPreferenceUtil(Context context,String name) {
-        this.context = context;
         preferences = context.getApplicationContext().getSharedPreferences(name,Context.MODE_PRIVATE);
     }
 
@@ -32,6 +30,20 @@ public class SharedPreferenceUtil {
 
         for(int i = 0 ;i<keys.length;i++){
             editor.putString(keys[i],values[i]);
+        }
+
+        editor.apply();
+    }
+
+    public void delete(String[] keys){
+        if(keys==null)
+            return;
+        if(keys.length==0)
+            return;
+        SharedPreferences.Editor editor = preferences.edit();
+
+        for (String key : keys) {
+            editor.remove(key);
         }
 
         editor.apply();

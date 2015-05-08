@@ -13,4 +13,9 @@ public class UserAccountUtil {
         return !(userName == null || "".equals(userName));
     }
 
+    public static void doLogout(Context context){
+        SharedPreferenceUtil preferences = new SharedPreferenceUtil(context, SharedPreferenceUtil.ACCOUNT);
+        preferences.delete(new String[]{SharedPreferenceUtil.USERNAME_KEY,SharedPreferenceUtil.PASSWORD_KEY});
+    }
+
 }

@@ -3,15 +3,21 @@ package com.lanhaijiye.WebMarket;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 import com.lanhaijiye.WebMarket.activities.BaseActivity;
+import com.lanhaijiye.WebMarket.adapter.PagerAdapter;
+import com.lanhaijiye.WebMarket.adapter.inter.PagerAdapterGettable;
 import com.lanhaijiye.WebMarket.fragments.LoadingScreenFragment;
 import com.lanhaijiye.WebMarket.fragments.MainUIFragment;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.services.UpdateService;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class MainActivity extends BaseActivity implements BaseFragment.LoadingListener {
+public class MainActivity extends BaseActivity implements BaseFragment.LoadingListener,PagerAdapterGettable {
     private BaseFragment mContent;
     private LoadingScreenFragment mLoading;
     private static boolean isFirstLoading = true;
@@ -66,6 +72,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK)
+        if(mContent!=null)
         if(mContent.canGoBack()){
             mContent.goBack();
             return true;
@@ -77,5 +84,10 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
     protected void onDestroy() {
         stopService(serviceIntent);
         super.onDestroy();
+    }
+
+    @Override
+    public PagerAdapter getPagerAdapter() {
+        return ((PagerAdapterGettable)mContent).getPagerAdapter();
     }
 }
