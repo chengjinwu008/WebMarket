@@ -8,13 +8,6 @@
         </proGuardCfgFiles>
       </configuration>
     </facet>
-    <facet type="android" name="Android2">
-      <configuration>
-        <proGuardCfgFiles>
-          <file>file://D:/Program Files (x86)/Android/SDK/tools/proguard/proguard-android.txt</file>
-        </proGuardCfgFiles>
-      </configuration>
-    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />

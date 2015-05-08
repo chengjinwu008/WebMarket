@@ -26,7 +26,6 @@ import java.util.TimerTask;
 public class MainUIContentFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener<WebView> {
 
     private PullToRefreshWebView web_content;
-    private LoadingListener listener;
     private Handler mHandler = new Handler();
     private final String url = "http://192.168.1.79/wp/XM0000004/wwwroot/mobile/";
 
@@ -47,11 +46,6 @@ public class MainUIContentFragment extends BaseFragment implements PullToRefresh
     @Override
     public void goBack() {
         web_content.getRefreshableView().goBack();
-    }
-
-    @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-        this.listener = listener;
     }
 
     //下拉刷新触发

@@ -25,7 +25,7 @@
                     />
             <RelativeLayout
                     style="@style/ucenter_item"
-                    >
+                    android:id="@+id/ucenter_indent_list_btn">
 
                 <ImageView
                         style="@style/ucenter_item_icon"
@@ -61,7 +61,7 @@
                     style="@style/divider"
                     />
             <RelativeLayout
-                    style="@style/ucenter_item">
+                    style="@style/ucenter_item" android:id="@+id/ucenter_my_collection">
                 <ImageView
                         style="@style/ucenter_item_icon"
                         android:src="@drawable/shoucang"
@@ -79,7 +79,7 @@
                     style="@style/divider"
                     />
             <RelativeLayout
-                    style="@style/ucenter_item">
+                    style="@style/ucenter_item" android:id="@+id/ucenter_address_btn">
                 <ImageView
                         style="@style/ucenter_item_icon"
                         android:src="@drawable/shouhuo"
@@ -96,7 +96,7 @@
                     style="@style/divider"
                     />
             <RelativeLayout
-                    style="@style/ucenter_item">
+                    style="@style/ucenter_item" android:id="@+id/ucenter_modify_data_btn">
                 <ImageView
                         style="@style/ucenter_item_icon"
                         android:src="@drawable/ziliao"
@@ -112,7 +112,7 @@
                     style="@style/divider"
                     />
             <RelativeLayout
-                    style="@style/ucenter_item">
+                    style="@style/ucenter_item" android:id="@+id/ucenter_calling_btn">
                 <ImageView
                         style="@style/ucenter_item_icon"
                         android:src="@drawable/kefuzhongxing"

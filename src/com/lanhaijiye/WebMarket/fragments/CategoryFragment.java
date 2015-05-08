@@ -13,8 +13,6 @@ import com.lanhaijiye.WebMarket.utils.WebViewUtil;
  * Created by Administrator on 2015/5/6.
  */
 public class CategoryFragment extends BaseFragment {
-
-    private LoadingListener listener;
     private PullToRefreshWebView pw;
     private final String url = "http://192.168.1.79/wp/XM0000004/wwwroot/mobile/category.php";
 
@@ -36,10 +34,5 @@ public class CategoryFragment extends BaseFragment {
     @Override
     public void goBack() {
         pw.getRefreshableView().goBack();
-    }
-
-    @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-        this.listener = listener;
     }
 }

@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,7 +21,7 @@ import com.lanhaijiye.WebMarket.utils.PopWindowUtil;
  * Created by Administrator on 2015/4/29.
  */
 public class BaseActivity extends FragmentActivity {
-
+    public static final int LOGIN_CODE = 0x349;//登录代码
     public static final String SHUT_DOWN_ORDER = "com.lanhaijiye.WebMarket.ACTION_SHUT_DOWN";
     public static final String SHOW_UPDATE_CONFIRM_ORDER = "com.lanhaijiye.WebMarket.ACTION_SHOW_UPDATE_CONFIRM";
     protected boolean visible = false;

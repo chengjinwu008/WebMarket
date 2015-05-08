@@ -6,18 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import com.lanhaijiye.WebMarket.CommanDataObject;
 import com.lanhaijiye.WebMarket.R;
+import com.lanhaijiye.WebMarket.activities.CommonWebViewActivity;
 import com.lanhaijiye.WebMarket.activities.LoginTableActivity;
 import com.lanhaijiye.WebMarket.activities.SettingActivity;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
+import com.lanhaijiye.WebMarket.utils.LoginUtil;
 import com.lanhaijiye.WebMarket.utils.SharedPreferenceUtil;
+import com.lanhaijiye.WebMarket.utils.UserAccountUtil;
 
 /**
  * Created by Administrator on 2015/4/29.
  */
 public class UserCenterFragment extends BaseFragment implements View.OnClickListener, BaseFragment.LoadingListener {
 
-
+    public static final String CALL_CENTER_URL="/wp/XM0000004/wwwroot/mobile/kefu.php";
     private UILoginFragment loginButton;
     private UIUserInfoFragment userinfo;
 
@@ -36,10 +40,16 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         String password = sharedPreferenceUtil.readString(SharedPreferenceUtil.PASSWORD_KEY);
 
         if (user_name == null || user_name.trim().length() < 0)
-            getFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(loginButton).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(loginButton).commit();
         else
-            getFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(userinfo).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.user_info_fragment, userinfo).add(R.id.user_info_fragment, loginButton).show(userinfo).commit();
 
+        //注册菜单按钮
+        view.findViewById(R.id.ucenter_indent_list_btn).setOnClickListener(this);
+        view.findViewById(R.id.ucenter_my_collection).setOnClickListener(this);
+        view.findViewById(R.id.ucenter_address_btn).setOnClickListener(this);
+        view.findViewById(R.id.ucenter_modify_data_btn).setOnClickListener(this);
+        view.findViewById(R.id.ucenter_calling_btn).setOnClickListener(this);
         return view;
     }
 
@@ -53,16 +63,58 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-
-    }
-
-    @Override
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.u_center_title_setting_button:
                 intent.setClass(getActivity().getApplicationContext(), SettingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ucenter_indent_list_btn:
+                //判断用户登录没有
+                if(UserAccountUtil.getUserState(getActivity())){
+                    //登录了的
+
+                }else{
+                    //没有登录
+                    LoginUtil.showLoginAlertForFragment(this);
+                }
+                break;
+            case R.id.ucenter_my_collection:
+                //判断用户登录没有
+                if(UserAccountUtil.getUserState(getActivity())){
+                    //登录了的
+
+                }else{
+                    //没有登录
+                    LoginUtil.showLoginAlertForFragment(this);
+                }
+                break;
+            case R.id.ucenter_address_btn:
+                //判断用户登录没有
+                if(UserAccountUtil.getUserState(getActivity())){
+                    //登录了的
+
+                }else{
+                    //没有登录
+                    LoginUtil.showLoginAlertForFragment(this);
+                }
+                break;
+            case R.id.ucenter_modify_data_btn:
+                //判断用户登录没有
+                if(UserAccountUtil.getUserState(getActivity())){
+                    //登录了的
+
+                }else{
+                    //没有登录
+                    LoginUtil.showLoginAlertForFragment(this);
+                }
+                break;
+            case R.id.ucenter_calling_btn:
+                //跳转通用webview链接
+                intent.setClass(getActivity().getApplicationContext(), CommonWebViewActivity.class);
+                intent.putExtra(CommonWebViewActivity.INTENT_TITLE_KEY, getActivity().getResources().getString(R.string.call_center));
+                intent.putExtra(CommonWebViewActivity.INTENT_WEB_URL_KEY, CommanDataObject.MAIN_URL + CALL_CENTER_URL);
                 startActivity(intent);
                 break;
         }

@@ -26,7 +26,6 @@ import java.util.ArrayList;
  * Created by Administrator on 2015/4/28.
  */
 public class MainUIFragment extends BaseFragment implements BaseFragment.LoadingListener, RadioGroup.OnCheckedChangeListener {
-    private LoadingListener listener;
     private ArrayList<BaseFragment> fragments;
     private BaseFragment mFragment;
     private RadioGroup group;
@@ -35,7 +34,6 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     private TextView category_page_hint;
     private TextView shopping_page_hint;
     private TextView user_center_page_hint;
-    private int NO = 0;
     private PagerAdapter pagerAdapter;
     private ViewPager pager;
 
@@ -104,17 +102,13 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         //如果键盘弹出，把键盘弹回去
 
         pager.setCurrentItem(i,true);
+        mFragment = fragments.get(i);
         View view = getActivity().getWindow().peekDecorView();
         if (view != null) {
             InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
 
-    }
-
-    @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-        this.listener = listener;
     }
 
     @Override

@@ -60,4 +60,5 @@
     <string name="sign_up">注册</string>
     <string name="send_sms">发送短信</string>
     <string name="sms_send_hint">秒后再次发送</string>
+    <string name="not_login">尚未登录</string>
 </resources>

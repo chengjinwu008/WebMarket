@@ -33,9 +33,4 @@ public class UIUserInfoFragment extends BaseFragment{
     public void goBack() {
 
     }
-
-    @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-
-    }
 }

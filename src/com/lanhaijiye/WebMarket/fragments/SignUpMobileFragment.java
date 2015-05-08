@@ -56,11 +56,6 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_up_back:

@@ -92,6 +92,12 @@
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <!--默认弹窗背景-->
+    <style name="login_dialog_style" parent="android:Holo.Light.ButtonBar.AlertDialog">
+        <item name="android:background">@drawable/white_with_black_border</item>
+        <item name="android:windowBackground">@drawable/msg_hint_background</item>
+        <item name="android:popupBackground">@drawable/msg_hint_background</item>
+    </style>
 
 <!--动作类-->
     <style name="alert_dialog_anim" parent="android:Animation">

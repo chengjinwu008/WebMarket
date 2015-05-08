@@ -51,5 +51,8 @@
         <activity android:name=".activities.SignUpActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
+        <activity android:name=".activities.CommonWebViewActivity"
+                  android:theme="@android:style/Theme.Black.NoTitleBar"
+                />
     </application>
 </manifest>

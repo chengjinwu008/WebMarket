@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/title"
+            android:background="@color/white"
+            android:layout_width="match_parent" android:layout_height="60dp">
+        <TextView style="@style/header_text"
+                  android:text="标题"
+                  android:id="@+id/title_text"
+                />
+        <ImageView
+                android:padding="10dp"
+                style="@style/header_left_btn"
+                android:src="@drawable/jiantouleft"
+                android:id="@+id/back"
+                />
+    </RelativeLayout>
+    <FrameLayout
+            style="@style/divider"
+            android:id="@+id/divider1"
+            />
+    <com.handmark.pulltorefresh.library.PullToRefreshWebView
+            android:id="@+id/web_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    </com.handmark.pulltorefresh.library.PullToRefreshWebView>
+</LinearLayout>

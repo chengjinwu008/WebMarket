@@ -14,7 +14,6 @@ import com.lanhaijiye.WebMarket.utils.WebViewUtil;
  */
 public class ShoppingCartFragment extends BaseFragment {
 
-    private LoadingListener listener;
     private PullToRefreshWebView pw;
     private final String url = "http://192.168.1.79/wp/XM0000004/wwwroot/mobile/cart.php";
 
@@ -36,10 +35,5 @@ public class ShoppingCartFragment extends BaseFragment {
     @Override
     public void goBack() {
         pw.getRefreshableView().goBack();
-    }
-
-    @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-        this.listener = listener;
     }
 }

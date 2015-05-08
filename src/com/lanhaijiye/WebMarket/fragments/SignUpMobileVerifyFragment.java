@@ -53,11 +53,6 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements MobileNu
     }
 
     @Override
-    public void setOnLoadFinishListener(LoadingListener listener) {
-
-    }
-
-    @Override
     public void changeNum(String num) {
         showNum(num);
     }
