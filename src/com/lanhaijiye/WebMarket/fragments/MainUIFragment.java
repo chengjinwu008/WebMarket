@@ -78,9 +78,11 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
         fragments.add(fragment1);
         fragments.add(fragment2);
         fragments.add(fragment3);
-
+        //初始化pager
         pagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(),fragments);
         pager = (ViewPager) view.findViewById(R.id.main_content_change);
+        //提升pager的缓存数量
+        pager.setOffscreenPageLimit(3);
         pager.setAdapter(pagerAdapter);
 
         return view;

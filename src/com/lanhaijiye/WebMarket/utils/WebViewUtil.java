@@ -23,6 +23,9 @@ public class WebViewUtil {
         web_content.getRefreshableView().requestFocus();
         web_content.getRefreshableView().setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         web_content.getRefreshableView().setWebViewClient(new MyWebViewClient(listener));
+        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
         initWeb(web_content,url);
 //        web_content.addJavascriptInterface(new JavaScriptInterface(),"demo"); Javascript和webView交互
     }
