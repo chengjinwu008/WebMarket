@@ -98,14 +98,13 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
     protected void onStart() {
         super.onStart();
 
-        user_name_text.requestFocus();
-        InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                manager.showSoftInput(user_name_text, 0);
-            }
-        }, 500);
+        InputMethodUtil.showSoftInputMethod(this,mHandler,user_name_text);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        InputMethodUtil.hideSoftInputMethod(this);
     }
 
     @Override

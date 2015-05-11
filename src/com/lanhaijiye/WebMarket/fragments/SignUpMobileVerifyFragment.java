@@ -1,6 +1,7 @@
 package com.lanhaijiye.WebMarket.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -78,6 +80,18 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
         nickname_field.addTextChangedListener(this);
         password_field.addTextChangedListener(this);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        InputMethodUtil.showSoftInputMethod(getActivity(),mHandler,verify_code);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        InputMethodUtil.hideSoftInputMethod(getActivity());
     }
 
     @Override
