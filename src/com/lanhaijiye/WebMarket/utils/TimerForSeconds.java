@@ -23,11 +23,17 @@ public class TimerForSeconds extends Thread {
         void onEverySeconds(int timeLeft);
 
         void onTimeUp();
+
+        /**
+         * 用于返回一个标识，中止计时器的循环
+         * @return false中止循环计时
+         */
+        boolean getTimerFlag();
     }
 
     @Override
     public void run() {
-        while(timeLeft>=1){
+        while(timeLeft>=1 && listener.getTimerFlag()){
             try {
                 sleep(1000);
             } catch (InterruptedException e) {

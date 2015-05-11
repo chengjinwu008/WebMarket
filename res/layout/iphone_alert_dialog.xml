@@ -30,7 +30,8 @@
                     android:textColor="@color/black"
                     android:background="@drawable/login_dialog_btn_left"
                     />
-            <Button android:layout_width="0dp" android:layout_height="wrap_content"
+            <Button
+                    android:layout_width="0dp" android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/login"
                     android:id="@+id/ok"

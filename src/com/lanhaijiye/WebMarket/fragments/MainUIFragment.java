@@ -208,6 +208,12 @@ public class MainUIFragment extends BaseFragment implements BaseFragment.Loading
     @Override
     public void onPageSelected(int i) {
         ((RadioButton) group.getChildAt(i)).setChecked(true);
+        mFragment = fragments.get(i);
+        View view = getActivity().getWindow().peekDecorView();
+        if (view != null) {
+            InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override

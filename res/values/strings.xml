@@ -63,4 +63,11 @@
     <string name="not_login">尚未登录</string>
     <string name="logout">退出登录</string>
     <string name="shut_down_client">退出客户端</string>
+    <string name="ok">确定</string>
+    <string name="login_fail">登录失败，密码或账号不正确</string>
+    <string name="nickname_hint">2–20个字符</string>
+    <string name="set_password">设置账号密码</string>
+    <string name="password_hint">6–20个字符，包含字母和数字</string>
+    <string name="set_nickname">设置昵称</string>
+    <string name="input_verify_code">输入验证码</string>
 </resources>

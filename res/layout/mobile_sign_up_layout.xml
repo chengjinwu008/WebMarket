@@ -14,7 +14,7 @@
             <ImageView
                     android:id="@id/sign_up_back"
                     style="@style/header_left_btn"
-                    android:src="@drawable/jiantou"
+                    android:src="@drawable/jiantouleft"
                     />
     </RelativeLayout>
     <FrameLayout

@@ -3,7 +3,6 @@ package com.lanhaijiye.WebMarket.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -18,10 +17,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.adapter.TextAdapter;
+import com.lanhaijiye.WebMarket.alertDialog.IPhoneDialog;
 import com.lanhaijiye.WebMarket.dao.AccountData;
-import com.lanhaijiye.WebMarket.utils.DimensionUtil;
-import com.lanhaijiye.WebMarket.utils.PopWindowUtil;
-import com.lanhaijiye.WebMarket.utils.SharedPreferenceUtil;
+import com.lanhaijiye.WebMarket.utils.*;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2015/5/5.
@@ -30,7 +34,8 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
 
     private Handler mHandler = new Handler();
     private EditText user_name_text;
-    private CheckBox checkBox;
+    //隐藏密码组件
+    //private CheckBox checkBox;
     private EditText login_password_text;
     private ListView accountsList;
     private PopupWindow pop;
@@ -38,6 +43,13 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
     private String password;
     private Button confirmButton;
     public final static int REGISTER_CODE = 0x554;
+
+    public static final String LOGIN_PARAMETER_USERNAME_KEY = "username";
+    public static final String LOGIN_PARAMETER_PASSWORD_KEY = "pwd";
+
+    //登录的api地址
+    public static final String LOGIN_URL = "/wp/XM0000004/wwwroot/mobile/user.php?act=do_login";
+    public static final int LOGIN_SUCCESS_CODE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +90,7 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
         confirmButton.setOnClickListener(this);
 
         //手机注册按钮监听
-        View mobile_sign_up  = findViewById(R.id.login_mobile_sign_up_btn);
+        View mobile_sign_up = findViewById(R.id.login_mobile_sign_up_btn);
         mobile_sign_up.setOnClickListener(this);
     }
 
@@ -133,37 +145,101 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
                 break;
             case R.id.login_confirm_btn:
                 //提交user_name和user_name
-                //通过
-                if (true) {
-                    //todo login处理
-                    //1.储存密码和记录
-                    if (!AccountData.isSaved(this, user_name))
-                        AccountData.putAccount(this, user_name);
-                    SharedPreferenceUtil preferenceUtil = new SharedPreferenceUtil(this, SharedPreferenceUtil.ACCOUNT);
-                    //2.返回登录成功信息
-                    preferenceUtil.putString(new String[]{SharedPreferenceUtil.USERNAME_KEY, SharedPreferenceUtil.PASSWORD_KEY},
-                            new String[]{user_name, password}
-                    );
-                    setResult(RESULT_OK);
-                    this.finish();
-                }
-                //不通过
-                else {
-                    // 弹窗处理
-                    new AlertDialog.Builder(this).setTitle("密码不正确").setMessage("忘记了密码吗，还剩下2次可以输入").setPositiveButton("知道了", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            login_password_text.setText("");
+                //组装参数
+                Map<String, String> name_password = new HashMap<>();
+                name_password.put(LOGIN_PARAMETER_USERNAME_KEY, user_name);
+                name_password.put(LOGIN_PARAMETER_PASSWORD_KEY, MessageDiagestUtil.MD5(password));
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            RequestUtil.requestURLWithParameter(RequestUtil.RequestMethod.POST, URLUtil.getURLStr(LOGIN_URL, LoginTableActivity.this), name_password, LOGIN_SUCCESS_CODE, new StreamUtil.StreamListener() {
+                                @Override
+                                public void onProgressUpdate(float progress) throws IOException {
+
+                                }
+
+                                @Override
+                                public boolean getOutState() {
+                                    return false;
+                                }
+
+                                @Override
+                                public void onStreamReadFinished(byte[] bytes) {
+
+                                    String res = new String(bytes);
+                                    Log.e("login", res);
+                                    try {
+                                        //todo 对返回的json处理，得出登录失败或者成功的代码，并存token
+                                        JSONObject json_res = new JSONObject(res);
+                                        //通过解析json得到登录状态，分别进行处理
+                                        //通过
+                                        if (false) {
+
+                                            //1.储存密码和记录
+                                            if (!AccountData.isSaved(LoginTableActivity.this, user_name))
+                                                AccountData.putAccount(LoginTableActivity.this, user_name);
+                                            SharedPreferenceUtil preferenceUtil = new SharedPreferenceUtil(LoginTableActivity.this, SharedPreferenceUtil.ACCOUNT);
+                                            //2.返回登录成功信息
+                                            preferenceUtil.putString(new String[]{SharedPreferenceUtil.USERNAME_KEY, SharedPreferenceUtil.PASSWORD_KEY},
+                                                    new String[]{user_name, MessageDiagestUtil.MD5(password)}
+                                            );
+                                            setResult(RESULT_OK);
+                                            finish();
+                                            //不通过
+                                        }else {
+                                            // 弹窗处理
+                                            mHandler.post(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    IPhoneDialog dialog = new IPhoneDialog(LoginTableActivity.this);
+                                                    dialog.show();
+                                                    dialog.setOnCancelListener(new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                            login_password_text.setText("");
+                                                        }
+                                                    }).setOnOKListener(new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                            login_password_text.setText("");
+                                                        }
+                                                    }).changeOKText(getString(R.string.ok)).changeText(getString(R.string.login_fail));
+                                                }
+                                            });
+                                        }
+
+                                    } catch (JSONException e) {
+                                        Log.e("Login", "not a json type");
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        } catch (IOException e) {
+                            Log.e("login", "request login failed");
+                            e.printStackTrace();
                         }
-                    }).show();
-                }
+                    }
+                }.start();
                 break;
             case R.id.login_mobile_sign_up_btn:
-                //todo 跳转到手机注册页面
-                Intent intent = new Intent(this,SignUpActivity.class);
-                this.startActivityForResult(intent,REGISTER_CODE);
+                //跳转到手机注册页面
+                Intent intent = new Intent(this, SignUpActivity.class);
+                this.startActivityForResult(intent, REGISTER_CODE);
 //                this.finish();
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //处理注册信息
+        switch (requestCode){
+            case REGISTER_CODE:
+                if(resultCode == RESULT_OK)
+                    setResult(RESULT_OK);
                 break;
         }
     }

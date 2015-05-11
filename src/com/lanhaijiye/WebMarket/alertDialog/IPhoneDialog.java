@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import com.lanhaijiye.WebMarket.R;
 
 /**
@@ -25,21 +27,42 @@ public class IPhoneDialog extends AlertDialog {
         setContentView(R.layout.iphone_alert_dialog);
     }
 
-    public void setOnCancelListener(OnClickListener listener){
+    public IPhoneDialog setOnCancelListener(OnClickListener listener) {
         findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(IPhoneDialog.this,1);
+                listener.onClick(IPhoneDialog.this, 1);
             }
         });
+        return this;
     }
 
-    public void setOnOKListener(OnClickListener listener){
+    public IPhoneDialog setOnOKListener(OnClickListener listener) {
         findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(IPhoneDialog.this,2);
+                listener.onClick(IPhoneDialog.this, 2);
             }
         });
+        return this;
+
+    }
+
+    public IPhoneDialog changeText(String string) {
+        ((TextView) findViewById(R.id.textView)).setText(string);
+        return this;
+
+    }
+
+    public IPhoneDialog changeOKText(String string) {
+        ((Button) findViewById(R.id.ok)).setText(string);
+        return this;
+
+    }
+
+    public IPhoneDialog changeCancelText(String string) {
+        ((Button) findViewById(R.id.cancel)).setText(string);
+        return this;
+
     }
 }

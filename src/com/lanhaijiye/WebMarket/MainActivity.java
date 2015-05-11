@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class MainActivity extends BaseActivity implements BaseFragment.LoadingListener,PagerAdapterGettable {
     private BaseFragment mContent;
     private LoadingScreenFragment mLoading;
-    private static boolean isFirstLoading = true;
+    private boolean isFirstLoading = true;
     private Handler mHandler = new Handler();
     private Intent serviceIntent;
 
@@ -76,6 +76,9 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
         if(mContent.canGoBack()){
             mContent.goBack();
             return true;
+        }else{
+            //todo 再次返回则退出
+            sendBroadcast(new Intent(SHUT_DOWN_ORDER));
         }
         return super.onKeyDown(keyCode,event);
     }

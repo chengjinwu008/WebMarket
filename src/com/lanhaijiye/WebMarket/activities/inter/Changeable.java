@@ -6,5 +6,9 @@ import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
  * Created by Administrator on 2015/5/7.
  */
 public interface Changeable {
-    void change(BaseFragment baseFragment);
+    /**
+     * 由碎片调用的跳转函数
+     * @param nowFragment 当前的碎片，输入this即可
+     */
+    void change(BaseFragment nowFragment);
 }

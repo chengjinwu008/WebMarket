@@ -3,6 +3,7 @@ package com.lanhaijiye.WebMarket.utils;
 import android.util.Log;
 
 import java.io.*;
+import java.nio.ByteBuffer;
 
 /**
  * Created by Administrator on 2015/4/27.
@@ -11,7 +12,7 @@ public class StreamUtil {
 
     static final int buffer_size = 8192;
 
-    interface StreamListener {
+    public interface StreamListener {
         /**
          * 以百分比的形式返回进度
          *
@@ -24,6 +25,8 @@ public class StreamUtil {
          * @return
          */
         boolean getOutState();
+
+        void onStreamReadFinished(byte[] bytes);
     }
 
     /**
@@ -50,10 +53,15 @@ public class StreamUtil {
         String res = out.toString();
         out.close();
         bytes = null;
+
+        if(listener!=null)
+            listener.onStreamReadFinished(res.getBytes());
+
         return res;
     }
 
     public static void readStreamToStream(InputStream in, OutputStream out, int maxLength, StreamListener listener) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         byte[] bytes = new byte[buffer_size];
         int len;
         float progress = 0;
@@ -63,6 +71,7 @@ public class StreamUtil {
                 if(!listener.getOutState())
                     break;
             out.write(bytes, 0, len);
+            byteArrayOutputStream.write(bytes,0,len);
             progress += len;
 //            Log.i("process",progress / maxLength * 100+"");
             if (listener != null)
@@ -70,6 +79,10 @@ public class StreamUtil {
         }
         out.flush();
         bytes = null;
+        if(listener!=null)
+            listener.onStreamReadFinished(byteArrayOutputStream.toByteArray());
+        byteArrayOutputStream.flush();
+        byteArrayOutputStream.close();
     }
 
     /**
@@ -96,6 +109,8 @@ public class StreamUtil {
         String res = out.toString();
         out.close();
         bytes = null;
+        if(listener!=null)
+            listener.onStreamReadFinished(res.getBytes());
         return res.getBytes();
     }
 }

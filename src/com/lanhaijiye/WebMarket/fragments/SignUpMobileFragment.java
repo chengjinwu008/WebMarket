@@ -21,14 +21,10 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     private Button button;
     private EditText mobile_num;
     private SignUpMobileVerifyFragment mobile_verify_fragment;
-    private String num;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mobile_sign_up_layout,container,false);
-
-        //todo 事件处理
-
 
         //注册back按键
         view.findViewById(R.id.sign_up_back).setOnClickListener(this);
@@ -65,7 +61,7 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
                 break;
             case R.id.sign_up_nexn_step_btn:
                 //提取出号码,传递手机号码
-                num = mobile_num.getText().toString();
+                String num = mobile_num.getText().toString();
                 ((Storeable)getActivity()).SaveNum(num);
                 //todo 实现碎片切换
                 ((Changeable)getActivity()).change(this);
@@ -82,7 +78,7 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
     }
-
+    //按钮可用性切换
     @Override
     public void afterTextChanged(Editable s) {
         String x = mobile_num.getText().toString().trim();

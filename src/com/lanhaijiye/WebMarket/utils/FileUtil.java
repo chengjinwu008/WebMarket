@@ -38,6 +38,11 @@ public class FileUtil {
                     return listener.getOutState();
                 return true;
             }
+
+            @Override
+            public void onStreamReadFinished(byte[] bytes) {
+
+            }
         });
         out.close();
         if(listener!=null)

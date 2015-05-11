@@ -7,6 +7,8 @@ import com.lanhaijiye.WebMarket.activities.LoginTableActivity;
 import com.lanhaijiye.WebMarket.alertDialog.IPhoneDialog;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 
+import java.net.URL;
+
 /**
  * Created by android on 2015/5/8.
  */
@@ -33,5 +35,9 @@ public class LoginUtil {
     public static void doShowLoginForFragment(BaseFragment activityContext) {
         Intent intent =new Intent(activityContext.getActivity(),LoginTableActivity.class);
         activityContext.startActivityForResult(intent, BaseActivity.LOGIN_CODE);
+    }
+
+    public static void doLogin(URL loginUrl){
+        
     }
 }
