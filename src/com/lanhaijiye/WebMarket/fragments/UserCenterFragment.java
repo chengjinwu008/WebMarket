@@ -1,23 +1,30 @@
 package com.lanhaijiye.WebMarket.fragments;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import com.lanhaijiye.WebMarket.CommanDataObject;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.CommonWebViewActivity;
 import com.lanhaijiye.WebMarket.activities.LoginTableActivity;
 import com.lanhaijiye.WebMarket.activities.SettingActivity;
+import com.lanhaijiye.WebMarket.alertDialog.IPhoneMenu;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.utils.LoginUtil;
 import com.lanhaijiye.WebMarket.utils.SharedPreferenceUtil;
 import com.lanhaijiye.WebMarket.utils.UserAccountUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/4/29.
@@ -90,7 +97,29 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
 
                 }else{
                     //Ã»ÓÐµÇÂ¼
-                    LoginUtil.showLoginAlertForFragment(this);
+//
+                    List<Pair<Integer,String>> menuResource = new ArrayList<>();
+                    menuResource.add(new Pair<>(R.drawable.dingdan,"FirstMenu"));
+                    menuResource.add(new Pair<>(null,"SecondMenu"));
+                    menuResource.add(new Pair<>(null,"ThirdMenu"));
+                    IPhoneMenu menu = new IPhoneMenu(getActivity(), menuResource, new IPhoneMenu.IPhoneMenuListener() {
+                        @Override
+                        public void onclick(AdapterView<?> parent, View view, int position, long id, AlertDialog dialog) {
+                            switch (position){
+                                case 0:
+                                    LoginUtil.showLoginAlertForFragment(UserCenterFragment.this);
+                                    break;
+                                case 1:
+                                    LoginUtil.showLoginAlertForFragment(UserCenterFragment.this);
+                                    break;
+                                case 2:
+                                    LoginUtil.showLoginAlertForFragment(UserCenterFragment.this);
+                                    break;
+                            }
+                            dialog.dismiss();
+                        }
+                    });
+                    menu.show();
                 }
                 break;
             case R.id.ucenter_my_collection:

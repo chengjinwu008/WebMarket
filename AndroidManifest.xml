@@ -54,5 +54,8 @@
         <activity android:name=".activities.CommonWebViewActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
+        <activity android:name=".activities.CountryListActivity"
+                  android:theme="@android:style/Theme.Black.NoTitleBar"
+                />
     </application>
 </manifest>

@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <countries>
     <continent short_name="AS" chinese_name="亚洲">
-        <country short_name="CN" chinese_name="中华人民共和国">
-            86
-        </country>
-        <country short_name="JP" chinese_name="日本">
-            87
-        </country>
-        <country short_name="KR" chinese_name="韩国">
-            88
-        </country>
+        <country short_name="CN" chinese_name="中华人民共和国">86</country>
+        <country short_name="JP" chinese_name="日本">87</country>
+        <country short_name="KR" chinese_name="韩国">88</country>
     </continent>
     <continent short_name="MM" chinese_name="不知道什么洲">
-        <country short_name="XX" chinese_name="你猜猜是什么国">
-            555
-        </country>
-        <country short_name="YY" chinese_name="你再猜">
-            875
-        </country>
-        <country short_name="ZZ" chinese_name="猜不到吧">
-            22
-        </country>
+        <country short_name="XX" chinese_name="你猜猜是什么国">555</country>
+        <country short_name="YY" chinese_name="你再猜">875</country>
+        <country short_name="ZZ" chinese_name="猜不到吧">22</country>
     </continent>
 </countries>

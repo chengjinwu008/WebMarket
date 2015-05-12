@@ -56,10 +56,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    public void SaveNum(String num) {
+    public void SaveNum(String num,String preNum) {
         String num1 = num;
         //todo 复现手机号
-        ((MobileNumRecieverable)mobile_verify_fragment).changeNum(num);
+        ((MobileNumRecieverable)mobile_verify_fragment).changeNum(num,preNum);
     }
 
     @Override

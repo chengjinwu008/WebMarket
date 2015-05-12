@@ -1,5 +1,6 @@
 package com.lanhaijiye.WebMarket.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +13,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.CountryListActivity;
 import com.lanhaijiye.WebMarket.activities.inter.Changeable;
 import com.lanhaijiye.WebMarket.activities.inter.Storeable;
+import com.lanhaijiye.WebMarket.entities.CountryCode;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.utils.InputMethodUtil;
 
@@ -28,6 +31,8 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     private EditText mobile_num;
     private SignUpMobileVerifyFragment mobile_verify_fragment;
     private final int COUNTRY_LIST_REQUEST_CODE = 0x202;
+    private TextView country_selected;
+    private String preNum="86";//默认是86
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
         //注册输入框
         mobile_num = (EditText)view. findViewById(R.id.sign_up_mobile_num);
         mobile_num.addTextChangedListener(this);
+
+        //注册文本框
+        country_selected = (TextView) view.findViewById(R.id.country_selected);
 
         return view;
     }
@@ -84,7 +92,7 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
             case R.id.sign_up_nexn_step_btn:
                 //提取出号码,传递手机号码
                 String num = mobile_num.getText().toString();
-                ((Storeable)getActivity()).SaveNum(num);
+                ((Storeable)getActivity()).SaveNum(num,preNum);
                 // 实现碎片切换
                 ((Changeable)getActivity()).change(this);
                 break;
@@ -95,7 +103,11 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
             case COUNTRY_LIST_REQUEST_CODE:
-
+                if(resultCode== Activity.RESULT_OK){
+                    CountryCode countryCode = data.getParcelableExtra(CountryListActivity.ITENT_EXTRA_COUNTRY_CODE);
+                    country_selected.setText(countryCode.getChineseName()+"+"+countryCode.getCode());
+                    preNum = countryCode.getCode();
+                }
                 break;
         }
 

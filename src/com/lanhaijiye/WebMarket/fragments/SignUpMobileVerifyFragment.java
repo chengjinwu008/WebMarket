@@ -105,11 +105,11 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
     }
 
     @Override
-    public void changeNum(String num) {
+    public void changeNum(String num,String preNum) {
         //在号码改变的同时调用短信接口
         this.num = num;
         timerFlag = true;
-        sendSendSMSOrder(num);
+        sendSendSMSOrder("+"+preNum+num);
         showNum(num);
     }
 
@@ -215,6 +215,7 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
     private void sendSendSMSOrder(String num) {
         //todo 调用短信接口
         //封装参数
+        Log.i("dianwaNUm",num);
         Map<String, String> parameter = new HashMap<>();
         parameter.put(SIGN_UP_REQUEST_PHONE_NUM_KEY, num);
         //新开线程进行短信接口调用
