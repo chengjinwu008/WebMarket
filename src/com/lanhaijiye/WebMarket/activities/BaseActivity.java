@@ -84,6 +84,9 @@ public class BaseActivity extends FragmentActivity {
             }
         };
         registerReceiver(receiver, filter);
+
+        //新new~！ 给activity跳转添加动画效果！
+        overridePendingTransition(R.anim.change_fragment_right_in,R.anim.change_fragment_left_out);
     }
 
     @Override
@@ -96,5 +99,11 @@ public class BaseActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.change_fragment_left_in,R.anim.change_fragment_right_out);
     }
 }

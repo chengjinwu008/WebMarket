@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 
 /**
+ * 扫码应用
  * This activity opens the camera and does the actual scanning on a background
  * thread. It draws a viewfinder to help the user place the barcode correctly,
  * shows feedback as the image processing is happening, and then overlays the
@@ -54,6 +55,7 @@ import java.lang.reflect.Field;
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
 
 	private static final String TAG = CaptureActivity.class.getSimpleName();
+	private static final String INTENT_QRCODE_EXTRA = "code";
 
 	private CameraManager cameraManager;
 	private CaptureActivityHandler handler;
@@ -191,7 +193,10 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		bundle.putString("result", rawResult.getText());
 		//todo 传递结果
 //		startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
-		Log.w("扫描结果",rawResult.getText());
+		Log.w("扫描结果", rawResult.getText());
+		Intent intent = getIntent();
+		intent.putExtra(INTENT_QRCODE_EXTRA,rawResult.getText());
+		setResult(0, intent);
 		this.finish();
 	}
 
