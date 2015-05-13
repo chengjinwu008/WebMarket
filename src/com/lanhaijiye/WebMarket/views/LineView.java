@@ -44,7 +44,7 @@ public class LineView extends View {
         delta = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
         x = 0;
         radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,2,getResources().getDisplayMetrics());
-        backgroundColor = getResources().getColor(R.color.red);
+        backgroundColor = getResources().getColor(android.R.color.transparent);
     }
 
     @Override

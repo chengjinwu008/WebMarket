@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:background="@color/red"
+                android:background="@color/grey"
                 android:layout_height="match_parent">
-    <ImageView android:layout_alignParentLeft="true" android:id="@id/search_bar_logo" android:src="@drawable/logo"
+    <ImageView
+            android:layout_margin="15dp"
+            android:layout_alignParentLeft="true" android:id="@id/search_bar_logo" android:src="@drawable/logo"
                android:layout_width="80dp" android:layout_height="match_parent"/>
-    <ImageButton android:background="@color/red" android:src="@drawable/search_button" android:id="@id/search_bar_btn"
-                 android:layout_width="wrap_content" android:layout_height="match_parent"
-                 android:layout_alignParentRight="true"/>
     <EditText
+            android:id="@+id/search_edit_text"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/white"
             android:layout_width="match_parent" android:layout_height="match_parent" android:hint="@string/search_hint"
             android:layout_toRightOf="@id/search_bar_logo"
-            android:layout_toLeftOf="@id/search_bar_btn"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/black"
+            android:textColorHint="@color/gray_text"
+            android:textColor="@color/gray_text"
+            android:gravity="center"
+            android:imeOptions="actionSearch"
+            android:background="@drawable/transparent_black_corner_border"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:layout_marginRight="10dp"
+            />
+    <FrameLayout
+            android:layout_alignParentBottom="true"
+            style="@style/divider"
             />
 </RelativeLayout>

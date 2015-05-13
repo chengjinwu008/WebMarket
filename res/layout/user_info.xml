@@ -36,10 +36,10 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent" android:layout_height="50dp">
         <Button style="@style/ucenter_btn"
-                android:text="@string/my_favorite"
+                android:text="积分"
                 />
         <Button style="@style/ucenter_btn"
-                android:text="@string/history"
+                android:text="余额"
                 />
     </LinearLayout>
 </RelativeLayout>

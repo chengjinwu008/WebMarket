@@ -7,7 +7,7 @@
                 android:layout_below="@id/search_bar_fragment"
                  android:id="@id/main_web_content"
                 />
-       <include android:layout_width="match_parent" android:layout_height="50dp"
+       <include android:layout_width="match_parent" android:layout_height="60dp"
                 android:id="@id/search_bar_fragment"
                 layout="@layout/search_bar"
                 android:layout_alignParentTop="true"

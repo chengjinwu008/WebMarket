@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WebMarket</string>
-    <string name="search_hint">搜索LanHai商品</string>
+    <string name="search_hint">放大镜亲,在这里搜索哦</string>
     <string name="my_personal_center">个人中心</string>
     <string name="return_to_top">返回顶部</string>
     <string name="refresh_succeed">刷新成功</string>

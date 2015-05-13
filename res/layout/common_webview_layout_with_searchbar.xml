@@ -3,9 +3,9 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
     <RelativeLayout
-            android:background="@drawable/juxing"
+            android:id="@+id/title"
+            android:background="@color/white"
             android:layout_width="match_parent" android:layout_height="60dp">
         <EditText
                 android:id="@+id/search_edit_text"
@@ -19,13 +19,24 @@
                 android:background="@drawable/transparent_black_corner_border"
                 android:textSize="20sp"
                 android:padding="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="30dp"
+                />
+        <ImageView
+                android:padding="10dp"
+                style="@style/header_left_btn"
+                android:src="@drawable/jiantouleft"
+                android:id="@+id/back"
                 />
     </RelativeLayout>
+    <FrameLayout
+            style="@style/divider"
+            android:id="@+id/divider1"
+            />
     <com.handmark.pulltorefresh.library.PullToRefreshWebView
-            android:id="@id/category_page_web"
+            android:id="@+id/web_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
 
+    </com.handmark.pulltorefresh.library.PullToRefreshWebView>
 </LinearLayout>
