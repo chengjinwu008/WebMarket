@@ -17,8 +17,10 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+    <application
+            android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity
+                android:screenOrientation="portrait"
                 android:theme="@android:style/Theme.NoTitleBar"
                 android:name="MainActivity"
                   android:label="@string/app_name">
@@ -28,10 +30,13 @@
             </intent-filter>
         </activity>
         <activity
+                android:screenOrientation="portrait"
                 android:theme="@android:style/Theme.NoTitleBar"
                 android:name=".activities.SettingActivity">
         </activity>
-        <activity android:theme="@android:style/Theme.NoTitleBar" android:name=".activities.ApplicationInfoActivity"/>
+        <activity
+                android:screenOrientation="portrait"
+                android:theme="@android:style/Theme.NoTitleBar" android:name=".activities.ApplicationInfoActivity"/>
         <service android:name=".services.UpdateService">
             <intent-filter>
                 <action android:name="com.lanhaijiye.WebMarket.ACTION_CHECK_UPDATE"/>
@@ -45,16 +50,24 @@
                 android:screenOrientation="portrait"
                 android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
-        <activity android:name=".activities.LoginTableActivity"
+        <activity
+                android:screenOrientation="portrait"
+                android:name=".activities.LoginTableActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
-        <activity android:name=".activities.SignUpActivity"
+        <activity
+                android:screenOrientation="portrait"
+                android:name=".activities.SignUpActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
-        <activity android:name=".activities.CommonWebViewActivity"
+        <activity
+                android:screenOrientation="portrait"
+                android:name=".activities.CommonWebViewActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
-        <activity android:name=".activities.CountryListActivity"
+        <activity
+                android:screenOrientation="portrait"
+                android:name=".activities.CountryListActivity"
                   android:theme="@android:style/Theme.Black.NoTitleBar"
                 />
     </application>

@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager;
  */
 public class InputMethodUtil {
 
-    public static void showSoftInputMethod(Context context,Handler mHandler,View editTextView){
+    public static void showSoftInputMethod(Context context,Handler mHandler,View editTextView,int timeDelay){
         editTextView.requestFocus();
         InputMethodManager manager = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
         mHandler.postDelayed(new Runnable() {
@@ -19,14 +19,16 @@ public class InputMethodUtil {
             public void run() {
                 manager.showSoftInput(editTextView, 0);
             }
-        }, 500);
+        }, timeDelay);
     }
 
     public static void hideSoftInputMethod(Activity activityContext){
-        View view = activityContext.getWindow().peekDecorView();
-        if (view != null) {
-            InputMethodManager inputmanger = (InputMethodManager)activityContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if(activityContext!=null){
+            View view = activityContext.getWindow().peekDecorView();
+            if (view != null) {
+                InputMethodManager inputmanger = (InputMethodManager)activityContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 }

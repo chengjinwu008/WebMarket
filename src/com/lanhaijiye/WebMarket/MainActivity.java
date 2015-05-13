@@ -31,10 +31,15 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
             mContent = new MainUIFragment();
             mLoading = new LoadingScreenFragment();
             mContent.setOnLoadFinishListener(this);
+            getSupportFragmentManager().beginTransaction().remove(mContent).remove(mLoading).commit();
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, mContent, "content").add(android.R.id.content, mLoading, "loading")
             .show(mLoading)
                     .commit();
             mContent.setUserVisibleHint(false);
+        }else{
+            mLoading = new LoadingScreenFragment();
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, mContent, "content").show(mContent)
+                    .commit();
         }
     }
 

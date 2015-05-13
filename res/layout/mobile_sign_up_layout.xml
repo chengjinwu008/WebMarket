@@ -88,7 +88,7 @@
 
         <EditText android:background="@null"
                   android:id="@id/sign_up_mobile_num"
-                  android:inputType="number"
+                  android:inputType="phone"
                   android:layout_toRightOf="@id/login_password_text_hint"
                   android:layout_centerVertical="true"
                   android:hint="@string/input_mobile_num_hint"

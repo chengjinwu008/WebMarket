@@ -83,15 +83,20 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        InputMethodUtil.showSoftInputMethod(getActivity(),mHandler,verify_code);
-    }
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            Activity activity =getActivity();
+            InputMethodUtil.hideSoftInputMethod(activity);
+        }else{
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    InputMethodUtil.showSoftInputMethod(getActivity(), mHandler, verify_code,500);
+                }
+            },500);
+        }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        InputMethodUtil.hideSoftInputMethod(getActivity());
     }
 
     @Override

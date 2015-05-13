@@ -1,7 +1,6 @@
 package com.lanhaijiye.WebMarket.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +27,6 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     private Handler mHandler=new Handler();
     private Button button;
     private EditText mobile_num;
-    private SignUpMobileVerifyFragment mobile_verify_fragment;
     private final int COUNTRY_LIST_REQUEST_CODE = 0x202;
     private TextView country_selected;
     private String preNum="86";//Ä¬ÈÏÊÇ86
@@ -57,15 +54,25 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        InputMethodUtil.showSoftInputMethod(getActivity(),mHandler,mobile_num);
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            InputMethodUtil.hideSoftInputMethod(getActivity());
+        }else{
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    InputMethodUtil.showSoftInputMethod(getActivity(), mHandler, mobile_num, 500);
+                }
+            }, 1000);
+        }
+
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        InputMethodUtil.hideSoftInputMethod(getActivity());
+    public void onStart() {
+        super.onStart();
+        InputMethodUtil.showSoftInputMethod(getActivity(), mHandler, mobile_num, 500);
     }
 
     @Override

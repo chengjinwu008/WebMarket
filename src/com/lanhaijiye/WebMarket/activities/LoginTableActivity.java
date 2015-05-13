@@ -98,7 +98,7 @@ public class LoginTableActivity extends BaseActivity implements CompoundButton.O
     protected void onStart() {
         super.onStart();
 
-        InputMethodUtil.showSoftInputMethod(this,mHandler,user_name_text);
+        InputMethodUtil.showSoftInputMethod(this,mHandler,user_name_text,500);
     }
 
     @Override

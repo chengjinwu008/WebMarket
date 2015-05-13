@@ -70,4 +70,6 @@
     <string name="password_hint">6–20个字符，包含字母和数字</string>
     <string name="set_nickname">设置昵称</string>
     <string name="input_verify_code">输入验证码</string>
+    <string name="prepare_download">准备下载中</string>
+    <string name="downloading">开始下载</string>
 </resources>
