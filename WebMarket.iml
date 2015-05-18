@@ -20,5 +20,6 @@
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="module" module-name="PullToRefreshLibrary" />
     <orderEntry type="module" module-name="DownLoader" />
+    <orderEntry type="module" module-name="PhoneNumberVerify" />
   </component>
 </module>

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../DownLoader/DownLoader.iml" filepath="$PROJECT_DIR$/../DownLoader/DownLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PhoneNumberVerify/PhoneNumberVerify.iml" filepath="$PROJECT_DIR$/../PhoneNumberVerify/PhoneNumberVerify.iml" />
       <module fileurl="file://$PROJECT_DIR$/../PullToRefreshLibrary-master/PullToRefreshLibrary.iml" filepath="$PROJECT_DIR$/../PullToRefreshLibrary-master/PullToRefreshLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../StreamUtil/StreamUtil.iml" filepath="$PROJECT_DIR$/../StreamUtil/StreamUtil.iml" />
       <module fileurl="file://$PROJECT_DIR$/WebMarket.iml" filepath="$PROJECT_DIR$/WebMarket.iml" />
     </modules>
   </component>

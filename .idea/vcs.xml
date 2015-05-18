@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../DownLoader" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../PhoneNumberVerify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../StreamUtil" vcs="Git" />
   </component>
 </project>

@@ -1,9 +1,11 @@
 package com.lanhaijiye.WebMarket.fragments;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,10 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.cjq.PhoneNumberVerify.util.Validator;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.CountryListActivity;
 import com.lanhaijiye.WebMarket.activities.inter.Changeable;
 import com.lanhaijiye.WebMarket.activities.inter.Storeable;
+import com.lanhaijiye.WebMarket.alertDialog.IPhoneDialog;
 import com.lanhaijiye.WebMarket.entities.CountryCode;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.utils.InputMethodUtil;
@@ -99,9 +103,39 @@ public class SignUpMobileFragment extends BaseFragment implements View.OnClickLi
             case R.id.sign_up_nexn_step_btn:
                 //提取出号码,传递手机号码
                 String num = mobile_num.getText().toString();
-                ((Storeable)getActivity()).SaveNum(num,preNum);
-                // 实现碎片切换
-                ((Changeable)getActivity()).change(this);
+                Validator.verify(num, new Validator.VerifyListener() {
+                    @Override
+                    public void verifyFinished(String state) {
+                        if(state!=null){
+                            ((Storeable) getActivity()).SaveNum(num, preNum);
+                            // 实现碎片切换
+                            ((Changeable)getActivity()).change(SignUpMobileFragment.this);
+                        }else{
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    IPhoneDialog iPhoneDialog = new IPhoneDialog(SignUpMobileFragment.this.getActivity());
+                                    iPhoneDialog.show();
+                                    iPhoneDialog.changeText(SignUpMobileFragment.this.getActivity().getString(R.string.wrong_mobile_num_format));
+                                    iPhoneDialog.changeOKText(SignUpMobileFragment.this.getActivity().getString(R.string.ok));
+                                    iPhoneDialog.setOnCancelListener(new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    iPhoneDialog.setOnOKListener(new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            mobile_num.setText("");
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }
+                });
                 break;
         }
     }

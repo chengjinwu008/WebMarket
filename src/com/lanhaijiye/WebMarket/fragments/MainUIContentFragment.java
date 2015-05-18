@@ -39,7 +39,6 @@ public class MainUIContentFragment extends BaseFragment implements PullToRefresh
         web_content = (PullToRefreshWebView) view.findViewById(R.id.main_web_content);
         web_content.setOnRefreshListener(this);
         WebViewUtil.initWebSetting(web_content, CommanDataObject.MAIN_URL + URL, listener);
-
         initSearchView(view);
         return view;
     }
