@@ -130,7 +130,7 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
 
                 }else{
                     //没有登录
-                    LoginUtil.showLoginAlertForFragment(this);
+//                    LoginUtil.showLoginAlertForFragment(this);
                     ShareUtil.showShare(getActivity(),"这个是分享哦，亲",null);
                 }
                 break;

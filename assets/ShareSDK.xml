@@ -51,16 +51,16 @@
 			Line           http://media.line.me/zh-hant/
 			Pocket         http://getpocket.com/developer/apps/new
     -->
-    
+    <!--todo 改key 和 密钥 因为目前用的是个人的，不能支持企业级-->
     <ShareSDK 
-        AppKey = "WebMarket"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+        AppKey = "7871ab4d8ed4"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
     
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <SinaWeibo
         Id="1"
         SortId="1"
-        AppKey="7871ab4d8ed4"
-        AppSecret="8f4efb527a8abd2a1d3915c380367eff"
+        AppKey="568898243"
+        AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
         RedirectUrl="http://www.sharesdk.cn"
         ShareByAppClient="false"
         Enable="true" />

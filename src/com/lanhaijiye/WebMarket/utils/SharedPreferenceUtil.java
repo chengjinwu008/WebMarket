@@ -13,6 +13,8 @@ public class SharedPreferenceUtil {
     public static final String USERNAME_KEY = "username";
     public static final String PASSWORD_KEY = "password";
     public static final String STATE_TOKEN_KEY = "token";
+    public static final String STATE_PLATFORM = "platform";
+    public static final String STATE_PLATFORM_ID = "platform_id";
 
     public SharedPreferenceUtil(Context context,String name) {
         preferences = context.getApplicationContext().getSharedPreferences(name,Context.MODE_PRIVATE);

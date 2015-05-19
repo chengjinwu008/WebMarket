@@ -77,4 +77,7 @@
     <item name="sign_up_password_text" type="id"/>
     <item name="country_selected" type="id"/>
     <item name="download_notification_pause_btn" type="id"/>
+    <item name="login_sina" type="id"/>
+    <item name="login_QQ" type="id"/>
+    <item name="login_wechat" type="id"/>
 </resources>
