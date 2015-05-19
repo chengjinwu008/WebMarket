@@ -2,9 +2,17 @@
   <library name="libs">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/MobTools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ShareSDK-Core-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ShareSDK-QQ-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ShareSDK-SinaWeibo-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ShareSDK-Wechat-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ShareSDK-Wechat-Core-2.6.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/zxing.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/zxing.jar!/" />
+    </SOURCES>
   </library>
 </component>

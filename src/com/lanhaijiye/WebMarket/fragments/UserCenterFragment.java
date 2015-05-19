@@ -20,6 +20,7 @@ import com.lanhaijiye.WebMarket.activities.SettingActivity;
 import com.lanhaijiye.WebMarket.alertDialog.IPhoneMenu;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.utils.LoginUtil;
+import com.lanhaijiye.WebMarket.utils.ShareUtil;
 import com.lanhaijiye.WebMarket.utils.SharedPreferenceUtil;
 import com.lanhaijiye.WebMarket.utils.UserAccountUtil;
 
@@ -130,6 +131,7 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
                 }else{
                     //没有登录
                     LoginUtil.showLoginAlertForFragment(this);
+                    ShareUtil.showShare(getActivity(),"这个是分享哦，亲",null);
                 }
                 break;
             case R.id.ucenter_address_btn:
