@@ -15,13 +15,11 @@ import android.widget.ImageButton;
 import com.lanhaijiye.WebMarket.CommanDataObject;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.CommonWebViewActivity;
-import com.lanhaijiye.WebMarket.activities.LoginTableActivity;
 import com.lanhaijiye.WebMarket.activities.SettingActivity;
 import com.lanhaijiye.WebMarket.alertDialog.IPhoneMenu;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.utils.LoginUtil;
 import com.lanhaijiye.WebMarket.utils.ShareUtil;
-import com.lanhaijiye.WebMarket.utils.SharedPreferenceUtil;
 import com.lanhaijiye.WebMarket.utils.UserAccountUtil;
 
 import java.util.ArrayList;
