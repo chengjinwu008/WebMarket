@@ -23,7 +23,9 @@
             style="@style/divider"
             />
     <RelativeLayout
-            style="@style/ucenter_item" android:id="@+id/your_advise">
+            style="@style/ucenter_item" android:id="@+id/your_advise"
+            android:visibility="gone"
+            >
         <TextView
                 android:layout_marginLeft="5dp"
                 style="@style/ucenter_item_text"

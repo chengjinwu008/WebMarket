@@ -1,7 +1,7 @@
 package com.lanhaijiye.WebMarket.utils;
 
 import android.content.Context;
-import com.lanhaijiye.WebMarket.CommanDataObject;
+import com.lanhaijiye.WebMarket.CommonDataObject;
 
 /**
  * Created by android on 2015/5/11.
@@ -10,7 +10,7 @@ public class URLUtil {
     public static String getURLStr(String s, Context context) {
 
         StringBuilder url = new StringBuilder();
-        url.append(CommanDataObject.MAIN_URL);
+        url.append(CommonDataObject.MAIN_URL);
         url.append(s);
         SharedPreferenceUtil preferenceUtil = new SharedPreferenceUtil(context, SharedPreferenceUtil.ACCOUNT);
         //获取到从服务器发送回来的密文

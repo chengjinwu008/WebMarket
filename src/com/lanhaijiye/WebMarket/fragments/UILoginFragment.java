@@ -1,10 +1,13 @@
 package com.lanhaijiye.WebMarket.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.lanhaijiye.WebMarket.R;
+import com.lanhaijiye.WebMarket.activities.BaseActivity;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.utils.LoginUtil;
 

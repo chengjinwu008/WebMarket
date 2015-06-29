@@ -60,4 +60,43 @@ public class RequestUtil {
         return res;
     }
 
+
+    public static byte[] requestURLWithJsonParameter(RequestMethod method, String url,String json, int succeedCode, StreamUtil.StreamListener listener) throws IOException {
+        byte[] res = null;
+        json = "opjson="+json;
+        HttpURLConnection connection = null;
+        switch (method) {
+            case POST:
+                //发送的是post请求
+                URL urlAddress = new URL(url);
+                connection = (HttpURLConnection) urlAddress.openConnection();
+                connection.setRequestMethod(method.toString());
+                connection.setConnectTimeout(NetWorkUtils.TIME_OUT);
+                connection.setDoOutput(true);
+                connection.setDoInput(true);
+                connection.setRequestProperty("Content-Type", "plain/text; charset=UTF-8");
+                BufferedOutputStream out = new BufferedOutputStream(connection.getOutputStream());
+                out.write(json.getBytes());
+                out.flush();
+                out.close();
+                connection.connect();
+                break;
+            case GET:
+                url += "?" + json;
+                connection = (HttpURLConnection) new URL(url).openConnection();
+                connection.setRequestMethod(method.toString());
+                connection.setConnectTimeout(NetWorkUtils.TIME_OUT);
+                connection.setDoOutput(true);
+                connection.setDoInput(true);
+                connection.connect();
+                break;
+        }
+        if (connection.getResponseCode() == succeedCode) {
+            InputStream in = new BufferedInputStream(connection.getInputStream());
+            res = StreamUtil.readStreamToBytes(in, connection.getContentLength(), listener);
+            in.close();
+        }
+        connection.disconnect();
+        return res;
+    }
 }

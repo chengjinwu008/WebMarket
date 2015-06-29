@@ -1,13 +1,18 @@
 package com.lanhaijiye.WebMarket.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshWebView;
 import com.lanhaijiye.WebMarket.R;
+import com.lanhaijiye.WebMarket.utils.WebViewUtil;
 
 /**
  * Created by android on 2015/5/8.
@@ -18,6 +23,8 @@ public class CommonWebViewActivity extends BaseActivity implements PullToRefresh
     public static final String INTENT_WEB_URL_KEY ="url";
     private PullToRefreshWebView webView;
     private String url = null;
+    public static final String ACTION_SHUTDOWN_WINDOW="com.lanhaijiye.shutdownCommonWebView";
+    private BroadcastReceiver receiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,16 +39,34 @@ public class CommonWebViewActivity extends BaseActivity implements PullToRefresh
 
             url = data.getString(INTENT_WEB_URL_KEY);
         }
+
         webView = (PullToRefreshWebView) findViewById(R.id.web_content);
-        webView.getRefreshableView().loadUrl(url);
+        WebViewUtil.initWebSetting(this,webView,url,null);
         webView.setOnRefreshListener(this);
 
         findViewById(R.id.back).setOnClickListener(this);
+
+        IntentFilter filter =new IntentFilter(ACTION_SHUTDOWN_WINDOW);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if(ACTION_SHUTDOWN_WINDOW.equals(intent.getAction())){
+                    finish();
+                }
+            }
+        };
+        registerReceiver(receiver,filter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(receiver);
+        super.onDestroy();
     }
 
     @Override
     public void onRefresh(PullToRefreshBase refreshView) {
-        webView.getRefreshableView().loadUrl(url);
+        webView.getRefreshableView().reload();
     }
 
     @Override

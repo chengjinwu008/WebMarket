@@ -1,7 +1,6 @@
 package com.lanhaijiye.WebMarket.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -10,22 +9,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.lanhaijiye.WebMarket.CommonDataObject;
+import com.lanhaijiye.WebMarket.MyApplication;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.activities.inter.Changeable;
 import com.lanhaijiye.WebMarket.activities.inter.TimerFlagChangeable;
 import com.lanhaijiye.WebMarket.dao.AccountData;
+import com.lanhaijiye.WebMarket.entities.LoginEvent;
+import com.lanhaijiye.WebMarket.entities.RegisterRequestEntity;
+import com.lanhaijiye.WebMarket.entities.SmsRequestEntity;
 import com.lanhaijiye.WebMarket.fragments.abs.BaseFragment;
 import com.lanhaijiye.WebMarket.fragments.inter.MobileNumRecieverable;
 import com.lanhaijiye.WebMarket.utils.*;
+import com.ypy.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,8 +41,8 @@ import java.util.Map;
 public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFlagChangeable, MobileNumRecieverable, View.OnFocusChangeListener, View.OnClickListener, TimerForSeconds.TimerListener, TextWatcher {
 
     private static final int SECOND_TO_WAIT = 60;
-    public static final String SIGN_UP_URL = "/wp/XM0000004/wwwroot/mobile/user.php?act=act_register";
-    public static final String SIGN_UP_SMS_URL = "/wp/XM0000004/wwwroot/mobile/user.php?act=act_register_sms";
+    public static final String SIGN_UP_URL = "/service/app.php";
+    public static final String SIGN_UP_SMS_URL = "/service/app.php";
     public static final int SUCCESS_SEND_NUM_CODE = 200;
     public static final String SIGN_UP_REQUEST_PHONE_NUM_KEY = "phone";
     public static final String SIGN_UP_REQUEST_NICKNAME_KEY = "nickname";
@@ -114,7 +120,11 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
         //在号码改变的同时调用短信接口
         this.num = num;
         timerFlag = true;
-        sendSendSMSOrder("+"+preNum+num);
+        try {
+            sendSendSMSOrder(num);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         showNum(num);
     }
 
@@ -134,7 +144,11 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
         switch (view.getId()) {
             case R.id.sign_up_sms_timer:
                 //点击发送短信按钮
-                sendSendSMSOrder(num);
+                try {
+                    sendSendSMSOrder(num);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.back:
                 //点击返回的时候
@@ -144,70 +158,58 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
             case R.id.login_confirm_btn:
                 //点击注册按钮需要做的事情
                 //点击注册按钮则需要将1验证码2昵称3密码4手机号封装进行post请求
-                Map<String, String> parameter = new HashMap<>();
-                parameter.put(SIGN_UP_REQUEST_PHONE_NUM_KEY, num);
-                parameter.put(SIGN_UP_REQUEST_PASSWORD_KEY, passwordText);
-                parameter.put(SIGN_UP_REQUEST_VERIFYCODE_KEY, verifyText);
-                parameter.put(SIGN_UP_REQUEST_NICKNAME_KEY, nicknameText);
-                //请求后得到一个json对象，对json解析得知注册失败还是成功
-                new Thread() {
+                MyApplication application = (MyApplication) getActivity().getApplication();
+                //todo 作注册请求
+                RegisterRequestEntity.Data data = new RegisterRequestEntity.Data(application.imei,num,passwordText,verifyText,nicknameText);
+                RegisterRequestEntity entity = new RegisterRequestEntity("0003",data);
+                StringRequest request = new StringRequest(Request.Method.POST, CommonDataObject.MAIN_URL+ SIGN_UP_URL, new Response.Listener<String>() {
                     @Override
-                    public void run() {
+                    public void onResponse(String response) {
+                        Log.i("test",response);
                         try {
-                            RequestUtil.requestURLWithParameter(RequestUtil.RequestMethod.POST, URLUtil.getURLStr(SIGN_UP_URL, getActivity()), parameter, SUCCESS_REQUEST_SIGN_UP_CODE, new StreamUtil.StreamListener() {
-                                @Override
-                                public void onProgressUpdate(float progress) throws IOException {
+                            JSONObject object = new JSONObject(response);
+                            String code = object.getString("code");
+                            Toast.makeText(getActivity(),object.getString("msg"),Toast.LENGTH_SHORT).show();
+                            if("0000".equals(code)){
+                                String sessionId = object.getJSONObject("data").getString("sessionId");
+                                String userId = object.getJSONObject("data").getString("userId");
 
+                                SharedPreferenceUtil util = new SharedPreferenceUtil(getActivity(),SharedPreferenceUtil.ACCOUNT);
+                                util.putString(new String[]{
+                                        SharedPreferenceUtil.STATE_SESSION_ID,SharedPreferenceUtil.STATE_USER_ID
+                                },new String[]{
+                                        sessionId,userId
+                                });
+
+                                if(!AccountData.isSaved(getActivity(),entity.getData().getPhoneNumber())){
+                                    AccountData.putAccount(getActivity(),entity.getData().getPhoneNumber());
                                 }
 
-                                @Override
-                                public boolean getOutState() {
-                                    return false;
-                                }
-
-                                @Override
-                                public void onStreamReadFinished(byte[] bytes) {
-                                    //获取到返回的json
-                                    String res = new String(bytes);
-                                    try {
-                                        JSONObject jsonRes = new JSONObject(res);
-                                        //解析json
-                                        if(true)
-                                        {
-                                            //todo 保存登录信息，方便以后登录，并且保存token
-                                            //解析出的结果是成功
-                                            if (!AccountData.isSaved(getActivity(), num))
-                                                AccountData.putAccount(getActivity(), num);
-                                            SharedPreferenceUtil preferenceUtil = new SharedPreferenceUtil(getActivity(), SharedPreferenceUtil.ACCOUNT);
-                                            preferenceUtil.putString(new String[]{SharedPreferenceUtil.USERNAME_KEY, SharedPreferenceUtil.PASSWORD_KEY},
-                                                    new String[]{num, MessageDiagestUtil.MD5(passwordText)}
-                                            );
-                                            //2.返回登录成功信息
-                                            getActivity().setResult(Activity.RESULT_OK);
-                                        }else{
-                                            //解析出的结果是失败
-                                            //直接用toast打印错误信息
-                                            String text="text from json";
-                                            mHandler.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    Toast.makeText(getActivity(),text,Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
-                                        }
-                                    } catch (JSONException e) {
-                                        Log.e("SignUp","the result is not a json");
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        } catch (IOException e) {
-                            Log.e("SignUp", "can not connect to sms server!");
+                                EventBus.getDefault().post(new LoginEvent());
+                                getActivity().setResult(Activity.RESULT_OK);
+                                getActivity().finish();
+                            }
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                };
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<>();
+                        params.put("opjson",application.gson.toJson(entity));
+                        Log.i("sign_up",application.gson.toJson(entity));
+                        return params;
+                    }
+                };
+                RequestQueue mRequestQueue =Volley.newRequestQueue(getActivity());
+                mRequestQueue.add(request);
+                mRequestQueue.start();
                 break;
         }
     }
@@ -217,28 +219,44 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
         ((Changeable) getActivity()).change(this);
     }
 
-    private void sendSendSMSOrder(String num) {
+    private void sendSendSMSOrder(String num) throws JSONException {
         //todo 调用短信接口
         //封装参数
-        Log.i("dianwaNUm",num);
-        Map<String, String> parameter = new HashMap<>();
-        parameter.put(SIGN_UP_REQUEST_PHONE_NUM_KEY, num);
-        //新开线程进行短信接口调用
-        new Thread() {
+        MyApplication myApplication = (MyApplication) getActivity().getApplication();
+        SmsRequestEntity.Data data = new SmsRequestEntity.Data(num);
+        SmsRequestEntity entity = new SmsRequestEntity("0001",data);
+        StringRequest request= new StringRequest(Request.Method.POST, CommonDataObject.MAIN_URL+SIGN_UP_SMS_URL, new Response.Listener<String>() {
             @Override
-            public void run() {
+            public void onResponse(String response) {
+                //短信发送成功
+                Log.i("dianwaNUm",response);
                 try {
-                    RequestUtil.requestURLWithParameter(RequestUtil.RequestMethod.POST, URLUtil.getURLStr(SIGN_UP_SMS_URL, getActivity()), parameter, SUCCESS_SEND_NUM_CODE, null);
-                } catch (IOException e) {
-                    Log.e("SignUp", "can not connect to sms server!");
+                    JSONObject object =new JSONObject(response);
+                    Toast.makeText(getActivity(),object.getString("msg"),Toast.LENGTH_SHORT).show();
+                    timerText.setEnabled(false);
+                    timerText.setText(SECOND_TO_WAIT + getActivity().getResources().getString(R.string.sms_send_hint));
+                    new TimerForSeconds(SECOND_TO_WAIT, SignUpMobileVerifyFragment.this).start();
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(),String.valueOf(error.networkResponse.statusCode),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("opjson",myApplication.gson.toJson(entity));
+                Log.i("dianwaNUm",myApplication.gson.toJson(entity));
+                return params;
+            }
         };
-
-        timerText.setEnabled(false);
-        timerText.setText(SECOND_TO_WAIT + getActivity().getResources().getString(R.string.sms_send_hint));
-        new TimerForSeconds(SECOND_TO_WAIT, this).start();
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        mRequestQueue.add(request);
+        mRequestQueue.start();
     }
 
     @Override
@@ -246,6 +264,7 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
         mHandler.post(new Runnable() {
             @Override
             public void run() {
+                if(timerText!=null)
                 timerText.setText(timeLeft + getActivity().getResources().getString(R.string.sms_send_hint));
             }
         });
@@ -256,7 +275,7 @@ public class SignUpMobileVerifyFragment extends BaseFragment implements TimerFla
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                timerText.setEnabled(false);
+                timerText.setEnabled(true);
                 timerText.setText(getActivity().getResources().getString(R.string.send_sms));
             }
         });

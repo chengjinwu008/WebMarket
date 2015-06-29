@@ -26,6 +26,7 @@
                 />
         <TextView android:layout_width="match_parent" android:layout_height="0dp"
                   android:layout_weight="1"
+                  android:visibility="gone"
                   android:textColor="@color/white"
                   android:paddingTop="5dp"
                   android:text="金牌用户"
@@ -36,9 +37,11 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent" android:layout_height="50dp">
         <Button style="@style/ucenter_btn"
+                android:id="@+id/pay_points"
                 android:text="积分"
                 />
         <Button style="@style/ucenter_btn"
+                android:id="@+id/user_money"
                 android:text="余额"
                 />
     </LinearLayout>

@@ -64,7 +64,8 @@
                      android:scaleType="centerInside"
                      android:background="@color/grey"
                      android:src="@drawable/jiantou"
-                     android:visibility="visible"
+                     android:visibility="gone"
+                     android:clickable="false"
                 />
     </RelativeLayout>
     <RelativeLayout
@@ -138,7 +139,9 @@
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             >
-        <RelativeLayout android:layout_width="0dp"
+        <RelativeLayout
+                android:visibility="gone"
+                android:layout_width="0dp"
                         android:id="@id/login_sina"
                         android:layout_height="match_parent" android:layout_weight="1">
             <LinearLayout
@@ -154,7 +157,9 @@
                         />
             </LinearLayout>
         </RelativeLayout>
-        <RelativeLayout android:layout_width="0dp"
+        <RelativeLayout
+                android:visibility="gone"
+                android:layout_width="0dp"
                         android:id="@id/login_QQ"
                         android:layout_height="match_parent" android:layout_weight="1">
             <LinearLayout
@@ -170,7 +175,9 @@
                         />
             </LinearLayout>
         </RelativeLayout>
-        <RelativeLayout android:layout_width="0dp"
+        <RelativeLayout
+                android:visibility="gone"
+                android:layout_width="0dp"
                         android:id="@id/login_wechat"
                         android:layout_height="match_parent" android:layout_weight="1">
             <LinearLayout

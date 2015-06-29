@@ -15,9 +15,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.lanhaijiye.WebMarket.R;
 import com.lanhaijiye.WebMarket.adapter.IconAdapter;
+import com.lanhaijiye.WebMarket.dao.AccountData;
+import com.lanhaijiye.WebMarket.entities.LoginEvent;
 import com.lanhaijiye.WebMarket.utils.CacheUtil;
 import com.lanhaijiye.WebMarket.utils.PackageUtil;
 import com.lanhaijiye.WebMarket.utils.UserAccountUtil;
+import com.ypy.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +72,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     private void initDialogData() {
         List<Pair<Integer, String>> pairs = new ArrayList<>();
+        if(UserAccountUtil.getUserState(this))
         pairs.add(new Pair<>(R.drawable.load_failed, getString(R.string.logout)));
         pairs.add(new Pair<>(R.drawable.load_succeed, getString(R.string.shut_down_client)));
         adapter = new IconAdapter(pairs, R.layout.icon_item, this);
@@ -92,7 +96,13 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     switch (i) {
                                         case 0://todo 退出登录
-                                            UserAccountUtil.doLogout(SettingActivity.this);
+                                            if(UserAccountUtil.getUserState(SettingActivity.this)){
+                                                UserAccountUtil.doLogout(SettingActivity.this);
+                                                EventBus.getDefault().post(new LoginEvent());
+                                                finish();
+                                            }else{
+                                                sendBroadcast(new Intent(SHUT_DOWN_ORDER));
+                                            }
                                             break;
                                         case 1://退出客户端
                                             sendBroadcast(new Intent(SHUT_DOWN_ORDER));

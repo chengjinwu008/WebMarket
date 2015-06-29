@@ -76,4 +76,8 @@
     <string name="clean">清除缓存</string>
     <string name="now_version">当前版本</string>
     <string name="wrong_mobile_num_format">手机号格式不正确</string>
+    <string name="pay_points">积分：</string>
+    <string name="user_money">余额：</string>
+    <string name="search_result">的搜索结果</string>
+    <string name="detail">详情</string>
 </resources>

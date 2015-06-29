@@ -50,13 +50,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
 
     @Override
     public void loadFinished() {
-        if(isFirstLoading){
+        if(isFirstLoading && !MainActivity.this.isFinishing()){
             android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
             transaction.show(mContent).hide(mLoading).remove(mLoading).commitAllowingStateLoss();
             isFirstLoading=false;
             mContent.setUserVisibleHint(true);
-            checkUpdate();
+//            checkUpdate(); //todo 更新模块启动
         }
     }
 
@@ -90,8 +90,9 @@ public class MainActivity extends BaseActivity implements BaseFragment.LoadingLi
 
     @Override
     protected void onDestroy() {
-        stopService(serviceIntent);
+//        stopService(serviceIntent);
         super.onDestroy();
+        //删除账号资料与否
     }
 
     @Override

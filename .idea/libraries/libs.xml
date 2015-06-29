@@ -9,10 +9,15 @@
       <root url="jar://$PROJECT_DIR$/libs/ShareSDK-Wechat-2.6.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/ShareSDK-Wechat-Core-2.6.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/zxing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gson-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/volley.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/picasso-2.5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/eventbus2.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/libs/zxing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/volley.jar!/" />
     </SOURCES>
   </library>
 </component>
